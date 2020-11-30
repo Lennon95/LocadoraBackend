@@ -1,4 +1,4 @@
-package com.bcopstein;
+package com.bcopstein.Entidades.Dominio.Carro;
 
 public class Carro {
     private String placa;
@@ -8,8 +8,7 @@ public class Carro {
     private boolean direcao;
     private boolean cambioautomatico;
 
-    public Carro(String placa, String marca, String modelo, boolean arcondicionado, boolean direcao,
-            boolean cambioautomatico) {
+    public Carro(String placa, String marca, String modelo, boolean arcondicionado, boolean direcao, boolean cambioautomatico) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
