@@ -1,11 +1,17 @@
 package com.bcopstein.Entidades.Dominio.Carro;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Carro {
+    
     @Id
+    @GeneratedValue( strategy=GenerationType.AUTO )
+    private long id;
+    
     private String placa;
     private Long nroMarca;
     private Long nroModelo;
@@ -103,5 +109,19 @@ public class Carro {
 
     public void setCor(String cor) {
         this.cor = cor;
+    }
+
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
     }
 }

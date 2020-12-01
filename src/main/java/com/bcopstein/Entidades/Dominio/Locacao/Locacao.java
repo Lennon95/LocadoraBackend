@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -16,6 +17,8 @@ public class Locacao {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long nroLocacao;
+    
+    @ManyToOne
     private Carro carro;
     private LocalDate inicio;
     private LocalDate fim;
@@ -27,6 +30,8 @@ public class Locacao {
     private float valorResidual;
     private Long kminicio;
     private Long fmfinal;
+    
+    @ManyToOne
     private Cliente cliente;
     private float valorPrePago;
 

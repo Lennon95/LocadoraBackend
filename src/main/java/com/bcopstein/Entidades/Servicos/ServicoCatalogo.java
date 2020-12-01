@@ -19,7 +19,9 @@ import com.bcopstein.Entidades.Repositorio.Modelos;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
+@Component
 public class ServicoCatalogo {
     private Carros carros;
     private Locacoes locacoes;
@@ -36,6 +38,11 @@ public class ServicoCatalogo {
     public List<Carro> listaCarrosDisponiveis(LocalDate inicioLocacao, LocalDate fimLocacao,
                                               boolean arcondicionado, boolean direcao,
                                               boolean cambio) {
+        
+        if(inicioLocacao == null || fimLocacao == null) {
+             return this.carros.todos().stream().collect(Collectors.toList());
+        }
+        
         if (inicioLocacao.compareTo(fimLocacao) < 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.DATA_INVALIDA);
             
