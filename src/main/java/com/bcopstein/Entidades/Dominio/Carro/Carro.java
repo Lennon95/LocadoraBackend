@@ -2,6 +2,8 @@ package com.bcopstein.Entidades.Dominio.Carro;
 
 import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,9 +29,15 @@ public class Carro {
     @JoinColumn(name="idmodelo", nullable=false)
     private Modelo modelo;
     
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean arCondicionado;
+    
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean direcao;
+    
+    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
     private boolean cambioAutomatico;
+    
     private Long km;
     private String cor;
 
