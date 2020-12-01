@@ -1,0 +1,160 @@
+html, body {
+    background-color: #FEFEFE;
+    padding: 0px;
+    margin: 0px;
+}
+
+/* Cabeçalho */
+h1 {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    box-sizing: border-box;
+    margin: 32px auto;
+    max-width: 1200px;
+    text-align: left;
+    padding: 0 32px;
+}
+
+/* Corpo */
+.corpo {
+    padding: 0 32px 64px 32px;
+    box-sizing: border-box;
+    flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+}
+
+/* Filtros */
+#form_filtros button:active {
+    background: #47a57f;
+}
+
+#form_filtros button:hover:not(:active) {
+    background: #67bc9a;
+}
+
+#form_filtros button {
+    text-transform: uppercase;
+    background: #9ad3bc;
+    border-radius: 5px;
+    margin-top: 32px;
+    font-size: 14px;
+    padding: 16px 0;
+    cursor: pointer;
+    color: white;
+    border: none;
+}
+
+#form_filtros input[type="text"],
+#form_filtros input[type="number"] {
+    width: 100%;
+}
+
+#form_filtros div {
+    padding-bottom: 16px;
+}
+
+#form_filtros {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    box-sizing: border-box;
+    flex-direction: column;
+    padding-right: 32px;
+    display: flex;
+    width: 200px;
+}
+
+/* Carros */
+#carros .warning {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    text-align: center;
+    color: #BCBCBC;
+    font-size: 16px;
+}
+
+#carros {
+    padding-top: 1em;
+    flex-grow: 1;
+}
+
+.carro small {
+    text-align: left;
+    color: #BCBCBC;
+}
+
+.carro div {
+    min-width: 200px;
+    flex-grow: 1;
+}
+
+.carro h4 {
+    text-align: left;
+    margin: 4px 0;
+}
+
+.carro h5 {
+    color: #BCBCBC;
+    margin: 0px;
+}
+
+.carro p:last-of-type {
+    color: #333333;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.carro p {
+    margin: 0px 0 4px 0;
+    color: #BCBCBC;
+    font-size: 12px;
+    text-align: right;
+}
+
+.carro a:active {
+    background: #47a57f;
+}
+
+.carro a:hover:not(:active) {
+    background: #67bc9a;
+}
+
+.carro a {
+    text-transform: uppercase;
+    box-sizing: border-box;
+    background: #9ad3bc;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: auto;
+    margin-top: 32px;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+    color: white;
+    padding: 16px;
+    border: none;
+    width: 100px;
+}
+
+.carro {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    box-sizing: border-box;
+    flex-direction: row;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+
+    background-color: #ffffff;
+    border: 1px solid gray;
+    margin-bottom: 16px;
+    padding: 32px;
+}
+
+/* Rodapé */
+footer {
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+    line-height: 24px;
+    text-align: center;
+    color: #CFCFCF;
+    margin-bottom: 64px;
+}

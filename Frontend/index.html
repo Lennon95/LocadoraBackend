@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="main.css" />
+        <title>Locadora de Carros</title>
+    </head>
+
+    <body>
+        <!-- Cabeçalho -->
+        <header>
+            <h1>Locadora de Carros</h1>
+        </header>
+
+        <!-- Corpo -->
+        <div class="corpo">
+            <!-- Filtros -->
+            <div class="filtros">
+                <form id="form_filtros">
+                    <div id="inicioLocacao" class="date-picker">
+                        <h3>In&iacute;cio da Loca&ccedil;&atilde;o</h3>
+                        <input type="text" placeholder="Dia"/>
+                        <input type="text" placeholder="M&ecirc;s"/>
+                        <input type="text" placeholder="Ano"/>
+                    </div>
+
+                    <div id="fimLocacao" class="date-picker">
+                        <h3>Fim da Loca&ccedil;&atilde;o</h3>
+                        <input type="text" placeholder="Dia"/>
+                        <input type="text" placeholder="M&ecirc;s"/>
+                        <input type="text" placeholder="Ano"/>
+                    </div>
+
+                    <br />
+
+                    <div>
+                        <input type="checkbox" name="arcondicionado" />
+                        <label>Ar Condicionado</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="direcao" />
+                        <label>Dire&ccedil;&atilde;o Hidr&aacute;ulica</label>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" name="cambio" />
+                        <label>C&acirc;mbio Autom&aacute;tico</label>
+                    </div>
+
+                    <button type="submit">Buscar</button>
+                </form>
+            </div>
+            
+            <!-- Lista de Carros -->
+            <div id="carros">
+                <div class="warning">Nenhum carro dispon&iacute;vel</div>
+            </div>
+        </div>
+
+        <!-- Rodapé -->
+        <footer>
+            <div>Servidor desenvolvido por [NOME DOS ALUNOS]</div>
+            <div>Cliente desenvolvido por Rafael Copstein</div>
+        </footer>
+
+        <!-- Scripts -->
+        <script type="text/javascript">
+            // ALTERE AQUI O ENDEREÇO DO SERVIDOR!
+            var servidor = "http://localhost:8080";
+        </script>
+
+        <script type="text/javascript" src="main.js"></script>
+    </body>
+</html>
