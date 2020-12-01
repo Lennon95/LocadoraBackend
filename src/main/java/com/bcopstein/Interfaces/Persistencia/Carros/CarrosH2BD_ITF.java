@@ -6,6 +6,6 @@ import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CarrosH2BD_ITF extends CrudRepository<Carro, String> {
-    List<Produto> findByPlaca(String placa);
-    List<Produto> findAll();
+    List<Carro> findByPlaca(String placa);
+    List<Carro> findAll();
 }

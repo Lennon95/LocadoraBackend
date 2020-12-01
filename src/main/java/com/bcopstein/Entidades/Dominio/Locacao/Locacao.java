@@ -4,7 +4,12 @@ import java.time.LocalDate;
 
 import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import com.bcopstein.Entidades.Dominio.Cliente.Cliente;
+
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 
 @Entity
 public class Locacao {

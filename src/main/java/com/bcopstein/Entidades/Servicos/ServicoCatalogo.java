@@ -1,5 +1,6 @@
 package com.bcopstein.Entidades.Servicos;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
@@ -16,11 +17,14 @@ import com.bcopstein.Entidades.Repositorio.Locacoes;
 import com.bcopstein.Entidades.Repositorio.Marcas;
 import com.bcopstein.Entidades.Repositorio.Modelos;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 public class ServicoCatalogo {
     private Carros carros;
     private Locacoes locacoes;
     private Marcas marcas;
-    private Modelo modelos;
+    private Modelos modelos;
 
     public ServicoCatalogo(Carros carros, Locacoes locacoes, Marcas marcas, Modelos modelos) {
         this.carros = carros;
@@ -35,7 +39,7 @@ public class ServicoCatalogo {
         if (inicioLocacao.compareTo(fimLocacao) < 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.DATA_INVALIDA);
             
-        List<Locacao> locs = this.locacoes
+        Collection<Locacao> locs = this.locacoes
                                  .pesquisa((Locacao l) -> l.getInicio().compareTo(inicioLocacao) > 0 && l.getFim().compareTo(fimLocacao) < 0);
 
         List<Carro> carros = this.carros                                 
@@ -43,9 +47,9 @@ public class ServicoCatalogo {
                                  .stream()
                                  .filter((Carro c) -> c.isArCondicionado() == arcondicionado)
                                  .filter((Carro c) -> c.isDirecao() == direcao)
-                                 .filter((Carro c) -> c.isCambio() == direcao)
+                                 .filter((Carro c) -> c.isCambioAutomatico() == direcao)
                                  .filter((Carro c) -> {
-                                     foreach (Locacao loc: locs) {
+                                     for (Locacao loc: locs) {
                                         if (loc.getCarro().equals(c))
                                             return false;
                                      }
@@ -56,7 +60,7 @@ public class ServicoCatalogo {
     }
 
     public List<Marca> listaMarcas() {
-        return this.marcas.todos();
+        return this.marcas.todos().stream().collect(Collectors.toList());
     }
 
     public List<Modelo> listaModelosMarca(Long nroMarca) {

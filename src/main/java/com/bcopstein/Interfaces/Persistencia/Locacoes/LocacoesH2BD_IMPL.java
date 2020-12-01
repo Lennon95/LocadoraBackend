@@ -26,7 +26,7 @@ public class LocacoesH2BD_IMPL implements Locacoes {
 
     @Override
     public Locacao recupera(Long nro) {
-        return locacoesBD.findById(nro);
+        return locacoesBD.findById(nro).get();
     }
 
     @Override

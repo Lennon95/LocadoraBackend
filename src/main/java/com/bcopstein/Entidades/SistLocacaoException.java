@@ -13,7 +13,7 @@ public class SistLocacaoException extends IllegalArgumentException {
     };
     private Causa causa;
 
-    public SistCausaException(Causa causa) {
+    public SistLocacaoException(Causa causa) {
         super(causa.toString());
         this.causa = causa;
     }

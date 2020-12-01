@@ -3,8 +3,8 @@ package com.bcopstein.Interfaces.DTO;
 import java.time.LocalDate;
 
 public class FiltroDTO {
-    private LocalDate inicioLocacao = new DataLocal();
-    private LocalDate fimLocacao = new DataLocal();
+    private LocalDate inicioLocacao;
+    private LocalDate fimLocacao;
     private boolean arcondicionado = false;
     private boolean direcao = false;
     private boolean cambio = false;

@@ -5,11 +5,15 @@ import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 import com.bcopstein.Entidades.Servicos.ServicoCatalogo;
 import com.bcopstein.Interfaces.DTO.FiltroDTO;
-import java.util.ArrayList;
+
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/catalogo")
@@ -23,14 +27,20 @@ public class CatalogoController {
 
     @GetMapping("/carrosDisponiveis")
     @CrossOrigin(origins = "*")
-    public ArrayList<Carro> carrosDisponiveis(FiltroDTO filtro) {
-        return this.servico.listaCarrosDisponiveis(filtro.getInicioLocacao(), filtro.getFimLocacao());
+    public Collection<Carro> carrosDisponiveis(FiltroDTO filtro) {
+        return this.servico.listaCarrosDisponiveis(
+            filtro.getInicioLocacao(),
+            filtro.getFimLocacao(),
+            filtro.isArcondicionado(),
+            filtro.isDirecao(),
+            filtro.isCambio()
+            );
     }
     
     @GetMapping("/marcas")
     @CrossOrigin(origins = "*")
-    public ArrayList<Marca> listaMarcas() {
-        ArrayList<Marca> list = null;
+    public Collection<Marca> listaMarcas() {
+        Collection<Marca> list = null;
         
         return list;
     }
@@ -38,8 +48,8 @@ public class CatalogoController {
     
     @GetMapping("/modelos")
     @CrossOrigin(origins = "*")
-    public ArrayList<Modelo> listaModelos(Long nroMarca) {
-        ArrayList<Modelo> list = null;
+    public Collection<Modelo> listaModelos(Long nroMarca) {
+        Collection<Modelo> list = null;
         
         return list;
     }

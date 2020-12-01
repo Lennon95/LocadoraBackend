@@ -24,7 +24,6 @@ public class Carro {
         this.arCondicionado = arCondicionado;
         this.direcao = direcao;
         this.cambioAutomatico = cambioAutomatico;
-        this.disponivel = true;
     }
 
     @Override
@@ -40,14 +39,6 @@ public class Carro {
         }
         
         return false;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPlaca() {

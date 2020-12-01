@@ -21,12 +21,12 @@ public class MarcasH2BD_IMPL implements Marcas {
 
     @Override
     public void cadastra(Marca marca) {
-        marcasBD.save(carro);
+        marcasBD.save(marca);
     }
 
     @Override
     public Marca recupera(Long nro) {
-        return marcasBD.findById(nro);
+        return marcasBD.findByNroMarca(nro).get(0);
     }
 
     @Override

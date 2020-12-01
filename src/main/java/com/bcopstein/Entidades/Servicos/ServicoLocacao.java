@@ -1,6 +1,7 @@
 package com.bcopstein.Entidades.Servicos;
 
 import java.util.List;
+import java.util.Collection;
 import java.util.stream.Collectors;
 import java.time.LocalDate;
 
@@ -17,6 +18,9 @@ import com.bcopstein.Entidades.Repositorio.Locacoes;
 import com.bcopstein.Entidades.Dominio.Calculator.SeguroCalculator;
 import com.bcopstein.Entidades.Dominio.Calculator.DescontoCalculator;
 import com.bcopstein.Entidades.Dominio.Calculator.CustoCalculator;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 @Component
 public class ServicoLocacao {
@@ -39,7 +43,7 @@ public class ServicoLocacao {
         this.custoCalc = custoCalc;
     }
 
-    public function locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
+    public boolean locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
         Collection<Carro> cars = this.carros.pesquisa((Carro c) -> c.getPlaca() == placaCarro);
         if (cars.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CARRO_NAO_ENCONTRADO);
@@ -47,5 +51,7 @@ public class ServicoLocacao {
         Collection<Cliente> clts = this.clientes.pesquisa((Cliente c) -> c.getDocumento() == docCliente);
         if (clts.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CLIENTE_NAO_ENCONTRADO);
+
+        return true;
     }
 }

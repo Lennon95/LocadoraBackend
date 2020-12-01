@@ -2,6 +2,8 @@ package com.bcopstein.Entidades.Dominio.Marca;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 public class Marca {

@@ -12,10 +12,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ClientesH2BD_IMPL implements Clientes {
-    private CarrosH2BD_ITF clientesBD;
+    private ClientesH2BD_ITF clientesBD;
 
     @Autowired
-    public ClientesH2BD_IMPL(ClientesH2BD_IMPL clientesBD) {
+    public ClientesH2BD_IMPL(ClientesH2BD_ITF clientesBD) {
         this.clientesBD = clientesBD;
     }
 
@@ -35,8 +35,8 @@ public class ClientesH2BD_IMPL implements Clientes {
     }
 
     @Override
-    public boolean existente(String documento) {
-        return clientesBD.existsById(documento);
+    public boolean existente(String doc) {
+        return clientesBD.existsById(doc);
     }
 
     @Override

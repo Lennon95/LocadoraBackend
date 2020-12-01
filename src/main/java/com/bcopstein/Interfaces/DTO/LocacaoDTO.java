@@ -31,7 +31,7 @@ public class LocacaoDTO {
         this.docCliente = docCliente;
     }
 
-    public Date getInicio() {
+    public LocalDate getInicio() {
         return inicio;
     }
 
@@ -39,7 +39,7 @@ public class LocacaoDTO {
         this.inicio = inicio;
     }
 
-    public Date getFim() {
+    public LocalDate getFim() {
         return fim;
     }
 

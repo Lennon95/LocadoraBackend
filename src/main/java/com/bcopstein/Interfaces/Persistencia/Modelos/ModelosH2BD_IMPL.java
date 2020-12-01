@@ -26,7 +26,7 @@ public class ModelosH2BD_IMPL implements Modelos {
 
     @Override
     public Modelo recupera(Long nro) {
-        return modelosBD.findById(nro);
+        return modelosBD.findByNroModelo(nro).get(0);
     }
 
     @Override

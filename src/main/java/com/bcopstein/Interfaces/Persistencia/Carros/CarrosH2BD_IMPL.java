@@ -54,6 +54,6 @@ public class CarrosH2BD_IMPL implements Carros {
 
     @Override
     public void remove(String placa) {
-        carrosBD.deleteBy(placa);
+        carrosBD.deleteById(placa);
     }
 }
