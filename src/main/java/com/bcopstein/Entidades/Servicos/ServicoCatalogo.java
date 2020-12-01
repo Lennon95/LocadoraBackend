@@ -57,7 +57,7 @@ public class ServicoCatalogo {
                                  .stream()
                                  .filter((Carro c) -> c.isArcondicionado() == arcondicionado)
                                  .filter((Carro c) -> c.isDirecao() == direcao)
-                                 .filter((Carro c) -> c.isCambioautomatico() == direcao)
+                                 .filter((Carro c) -> c.isCambioautomatico() == cambio)
                                  .filter((Carro c) -> idmarca == 0 || c.getMarca().getId() == idmarca)
                                  .filter((Carro c) -> idmodelo == 0 || c.getModelo().getId() == idmodelo)
                                  .filter((Carro c) -> {
