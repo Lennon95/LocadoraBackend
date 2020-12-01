@@ -29,13 +29,13 @@ public class Carro {
     @JoinColumn(name="idmodelo", nullable=false)
     private Modelo modelo;
     
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    @Column(columnDefinition = "boolean default false")
     private boolean arCondicionado;
     
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    @Column(columnDefinition = "boolean default false")
     private boolean direcao;
     
-    @Column(nullable = false, columnDefinition = "TINYINT", length = 1)
+    @Column(columnDefinition = "boolean default false")
     private boolean cambioAutomatico;
     
     private Long km;
