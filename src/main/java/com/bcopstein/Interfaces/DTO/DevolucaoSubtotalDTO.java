@@ -14,6 +14,8 @@ public class DevolucaoSubtotalDTO {
     private float valorPrePago;
     private float totalPagar;
 
+    public DevolucaoSubtotalDTO() {
+    }
 
     public DevolucaoSubtotalDTO(Cliente cliente, Carro carro, int diarias, float valorSeguro,
                                 float subtotal, float valorPrePago, float totalPagar) {

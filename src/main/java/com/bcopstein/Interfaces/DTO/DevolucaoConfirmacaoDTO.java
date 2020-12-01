@@ -4,6 +4,9 @@ public class DevolucaoConfirmacaoDTO {
     private boolean confirmado;
     private int codigo;
 
+    public DevolucaoConfirmacaoDTO() {
+    }
+    
     public DevolucaoConfirmacaoDTO(boolean confirmado, int codigo) {
         this.confirmado = confirmado;
         this.codigo = codigo;
