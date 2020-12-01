@@ -1,73 +1,16 @@
-async function carregaMarcas() {
-  let url = new URL(servidor + "/catalogo/marcas");
+function carregaMarcas(marcas) {
+  $.ajax({
+    url: servidor + "/catalogo/marcas",
+    dataType: 'json'
+  }).done(marcas);
+};
 
-  if (filtros) {
-    Object.keys(filtros)
-      .forEach(key => url.searchParams.append(key, filtros[key]));
-  }
-
-  try {
-    let resposta = await fetch(url);
-
-    if (resposta.ok) {
-        let conteudo = await resposta.json();
-
-        if (!conteudo) {
-          alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
-            "n\u00E3o p\u00F4de ser interpretado"
-          );
-        } else {
-          var lista = new Array(...conteudo);
-          return lista.map(x => x);
-        }
-    } else {
-        alert(
-          "Falha ao carregar os produtos!\n",
-          `Status da resposta: ${resposta.status}`,
-          `Mensagem de status da resposta: ${resposta.statusText}`);
-    }
-  } catch (erro) {
-    alert(erro);
-  }
-
-  return [];
-}
-
-async function carregaModelos(filtros) {
-  let url = new URL(servidor + "/catalogo/marcas");
-
-  if (filtros) {
-    Object.keys(filtros)
-      .forEach(key => url.searchParams.append(key, filtros[key]));
-  }
-
-  try {
-    let resposta = await fetch(url);
-
-    if (resposta.ok) {
-        let conteudo = await resposta.json();
-
-        if (!conteudo) {
-          alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
-            "n\u00E3o p\u00F4de ser interpretado"
-          );
-        } else {
-          var lista = new Array(...conteudo);
-          return lista.map(x => x);
-        }
-    } else {
-        alert(
-          "Falha ao carregar os produtos!\n",
-          `Status da resposta: ${resposta.status}`,
-          `Mensagem de status da resposta: ${resposta.statusText}`);
-    }
-  } catch (erro) {
-    alert(erro);
-  }
-
-  return [];
+function carregaModelos(modelos) {
+  $.ajax({
+    url: servidor + "/catalogo/modelos",
+    dataType: 'json',
+    data: { id: $("#marcas").val()}
+  }).done(modelos);
 }
 
 async function carregarCarros(filtros) {
@@ -263,9 +206,9 @@ function mostrarMarcas(cb) {
   }
   $("#marcas option").remove();
   $("#marcas").append("<option id=''>Todas</option>");
-  for(let marca of marcas) {
-    $("#marcas").append("<option id='"+marca.nome+"'>"+marca.nome+"</option>");
-  }
+  marcas.forEach((marca, index) => {
+    $("#marcas").append("<option value='"+marca.id+"'>"+marca.nome+"</option>");
+  });
   if(cb) {
     cb();
   }
@@ -278,7 +221,7 @@ function mostrarModelos(cb) {
   $("#modelos option").remove();
   $("#modelos").append("<option id=''>Todos</option>");
   for(let modelo of modelos) {
-    $("#modelos").append("<option id='"+modelo.nome+"'>"+modelo.nome+"</option>");
+    $("#modelos").append("<option value='"+modelo.id+"'>"+modelo.nome+"</option>");
   }
   if(cb) {
     cb();
@@ -296,21 +239,16 @@ $(document).ready(function() {
   let form_filtros = document.getElementById("form_filtros");
   form_filtros.onsubmit = aoEnviarFormulario.bind(this);
 
-  marcas = carregaMarcas();
-  mostrarMarcas();
+  carregaMarcas((ms)=>{
+    marcas = ms;
+    mostrarMarcas();
+  });
+
 
   $("#marcas").change(function(){
-    var sel = $(this).val();
-    carregaModelos({nome: sel});
-    mostrarModelos(function() {
-      filtros = {}
-      if($("#marca").val().lenth > 0) {
-        filtros.marca = $("#marca").val()
-      }
-      if($("#modelo").val().lenth > 0) {
-        filtros.modelo = $("#modelo").val()
-      }
-      carregarCarros(filtros);
+    carregaModelos((mds)=>{
+      modelos = mds;
+      mostrarModelos();
     });
   })
 })
