@@ -71,13 +71,10 @@ public class ServicoCatalogo {
     }
 
     public List<Modelo> listaModelosMarca(Long nroMarca) {
-        Collection<Marca> mcs = this.marcas.pesquisa((Marca m) -> m.getNroMarca() == nroMarca);
-        if (mcs.size() == 0)
-            throw new SistLocacaoException(SistLocacaoException.Causa.MARCA_INEXISTENTE);
-
+        Collection<Marca> mcs = this.marcas.pesquisa((Marca m) -> m.getId() == nroMarca);
         return this.modelos.todos()
                            .stream()
-                           .filter((Modelo m) -> m.getNroMarca() == nroMarca)
+                           .filter((Modelo m) -> m.getIdmarca()== nroMarca)
                            .collect(Collectors.toList());
     }
 }

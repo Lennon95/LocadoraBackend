@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Repositorio.Marcas;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,12 +29,17 @@ public class MarcasH2BD_IMPL implements Marcas {
 
     @Override
     public Marca recupera(Long nro) {
-        return marcasBD.findByNroMarca(nro).get(0);
+        Optional<Marca> m = marcasBD.findById(nro);
+        if(m.isPresent()) {
+            return m.get();
+        } else {
+            return null;
+        }
     }
 
     @Override
     public Collection<Marca> todos() {
-        return marcasBD.findAll();
+        return StreamSupport.stream(marcasBD.findAll().spliterator(), true).collect(Collectors.toList());
     }
 
     @Override
@@ -41,10 +49,9 @@ public class MarcasH2BD_IMPL implements Marcas {
 
     @Override
     public Collection<Marca> pesquisa(Predicate<Marca> pred) {
-        return marcasBD.findAll()
-                       .stream()
-                       .filter(pred)
-                       .collect(Collectors.toList());
+        return StreamSupport.stream(marcasBD.findAll().spliterator(), true)
+                    .filter(pred)
+                    .collect(Collectors.toList());
     }
 
     @Override

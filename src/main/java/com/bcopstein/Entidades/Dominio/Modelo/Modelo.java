@@ -9,15 +9,15 @@ import javax.persistence.GenerationType;
 public class Modelo {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long nroModelo;
+    private Long id;
     private String nome;
-    private Long nroMarca;
+    private Long idmarca;
 
     public Modelo(){}
 
-    public Modelo(String nome, Long nroMarca) {
+    public Modelo(String nome, Long idmarca) {
         this.nome = nome;
-        this.nroMarca = nroMarca;
+        this.idmarca = idmarca;
     }
 
     @Override
@@ -32,12 +32,12 @@ public class Modelo {
         } else return false;
     }
 
-    public Long getNroModelo() {
-        return nroModelo;
+    public Long getId() {
+        return id;
     }
 
-    public void setNroModelo(Long nroModelo) {
-        this.nroModelo = nroModelo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -48,11 +48,11 @@ public class Modelo {
         this.nome = nome;
     }
 
-    public Long getNroMarca() {
-        return nroMarca;
+    public Long getIdmarca() {
+        return idmarca;
     }
 
-    public void setNroMarca(Long nroMarca) {
-        this.nroMarca = nroMarca;
+    public void setIdmarca(Long idmarca) {
+        this.idmarca = idmarca;
     }
 }

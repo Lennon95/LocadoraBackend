@@ -9,15 +9,13 @@ import javax.persistence.GenerationType;
 public class Marca {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long nroMarca;
+    private Long id;
     private String nome;
-    private boolean isLuxo;
-
+    
     public Marca(){}
 
-    public Marca(String nome, boolean isLuxo) {
+    public Marca(String nome) {
         this.nome = nome;
-        this.isLuxo = isLuxo;
     }
 
     @Override
@@ -32,12 +30,12 @@ public class Marca {
         } else return false;
     }
 
-    public Long getNroMarca() {
-        return nroMarca;
+    public Long getId() {
+        return id;
     }
 
-    public void setNroMarca(Long nroMarca) {
-        this.nroMarca = nroMarca;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -46,13 +44,5 @@ public class Marca {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public boolean isLuxo() {
-        return isLuxo;
-    }
-
-    public void setLuxo(boolean isLuxo) {
-        this.isLuxo = isLuxo;
     }
 }

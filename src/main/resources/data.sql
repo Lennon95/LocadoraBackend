@@ -8,7 +8,7 @@ insert into marca (id, nome) values
     (6, 'Jeep');
 
 truncate table modelo;
-insert into modelo (id, nome, nroMarca) values 
+insert into modelo (id, nome, idmarca) values 
     (1, 'Cruze',1),
     (2, 'Ethios',2),
     (3, 'F-1000',3),

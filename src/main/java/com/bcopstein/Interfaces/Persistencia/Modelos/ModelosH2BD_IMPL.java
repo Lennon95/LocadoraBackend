@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 import com.bcopstein.Entidades.Repositorio.Modelos;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,12 +27,12 @@ public class ModelosH2BD_IMPL implements Modelos {
 
     @Override
     public Modelo recupera(Long nro) {
-        return modelosBD.findByNroModelo(nro).get(0);
+        return modelosBD.findById(nro).get();
     }
 
     @Override
     public Collection<Modelo> todos() {
-        return modelosBD.findAll();
+        return StreamSupport.stream(modelosBD.findAll().spliterator(), true).collect(Collectors.toList());
     }
 
     @Override
@@ -41,8 +42,7 @@ public class ModelosH2BD_IMPL implements Modelos {
 
     @Override
     public Collection<Modelo> pesquisa(Predicate<Modelo> pred) {
-        return modelosBD.findAll()
-                       .stream()
+        return StreamSupport.stream(modelosBD.findAll().spliterator(), true)
                        .filter(pred)
                        .collect(Collectors.toList());
     }

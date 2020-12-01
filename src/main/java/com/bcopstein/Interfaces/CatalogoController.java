@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/catalogo")
@@ -52,18 +53,15 @@ public class CatalogoController {
     @GetMapping("/marcas")
     @CrossOrigin(origins = "*")
     public Collection<Marca> listaMarcas() {
-        Collection<Marca> list = null;
-        
-        return list;
+        return this.servico.listaMarcas();
     }
     
     
     @GetMapping("/modelos")
     @CrossOrigin(origins = "*")
-    public Collection<Modelo> listaModelos(Long nroMarca) {
-        Collection<Modelo> list = null;
+    public Collection<Modelo> listaModelos(@RequestParam("id") Long nroMarca) {
         
-        return list;
+        return this.servico.listaModelosMarca(nroMarca);
     }
     
     
