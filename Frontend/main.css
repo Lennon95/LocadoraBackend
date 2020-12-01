@@ -25,6 +25,11 @@ h1 {
 }
 
 /* Filtros */
+
+.select-item label {
+  display: block;
+}
+
 #form_filtros button:active {
     background: #47a57f;
 }

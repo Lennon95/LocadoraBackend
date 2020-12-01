@@ -1,5 +1,5 @@
-async function carregarCarros(filtros) {
-  let url = new URL(servidor + "/locadora/carrosDisponiveis");
+async function carregaMarcas() {
+  let url = new URL(servidor + "/catalogo/marcas");
 
   if (filtros) {
     Object.keys(filtros)
@@ -14,7 +14,7 @@ async function carregarCarros(filtros) {
 
         if (!conteudo) {
           alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " + 
+            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
             "n\u00E3o p\u00F4de ser interpretado"
           );
         } else {
@@ -23,7 +23,79 @@ async function carregarCarros(filtros) {
         }
     } else {
         alert(
-          "Falha ao carregar os produtos!\n", 
+          "Falha ao carregar os produtos!\n",
+          `Status da resposta: ${resposta.status}`,
+          `Mensagem de status da resposta: ${resposta.statusText}`);
+    }
+  } catch (erro) {
+    alert(erro);
+  }
+
+  return [];
+}
+
+async function carregaModelos(filtros) {
+  let url = new URL(servidor + "/catalogo/marcas");
+
+  if (filtros) {
+    Object.keys(filtros)
+      .forEach(key => url.searchParams.append(key, filtros[key]));
+  }
+
+  try {
+    let resposta = await fetch(url);
+
+    if (resposta.ok) {
+        let conteudo = await resposta.json();
+
+        if (!conteudo) {
+          alert(
+            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
+            "n\u00E3o p\u00F4de ser interpretado"
+          );
+        } else {
+          var lista = new Array(...conteudo);
+          return lista.map(x => x);
+        }
+    } else {
+        alert(
+          "Falha ao carregar os produtos!\n",
+          `Status da resposta: ${resposta.status}`,
+          `Mensagem de status da resposta: ${resposta.statusText}`);
+    }
+  } catch (erro) {
+    alert(erro);
+  }
+
+  return [];
+}
+
+async function carregarCarros(filtros) {
+  let url = new URL(servidor + "/catalogo/carrosDisponiveis");
+
+  if (filtros) {
+    Object.keys(filtros)
+      .forEach(key => url.searchParams.append(key, filtros[key]));
+  }
+
+  try {
+    let resposta = await fetch(url);
+
+    if (resposta.ok) {
+        let conteudo = await resposta.json();
+
+        if (!conteudo) {
+          alert(
+            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
+            "n\u00E3o p\u00F4de ser interpretado"
+          );
+        } else {
+          var lista = new Array(...conteudo);
+          return lista.map(x => x);
+        }
+    } else {
+        alert(
+          "Falha ao carregar os produtos!\n",
           `Status da resposta: ${resposta.status}`,
           `Mensagem de status da resposta: ${resposta.statusText}`);
     }
@@ -41,7 +113,7 @@ async function aoEnviarFormulario(e) {
   filtros = {};
 
   const datas = lerDatas();
-  if (!datas[0] || isNaN(datas[0].getTime()) || 
+  if (!datas[0] || isNaN(datas[0].getTime()) ||
       !datas[1] || isNaN(datas[1].getTime())) {
     alert("Falha ao ler as datas");
     return;
@@ -134,10 +206,10 @@ async function alugar(index) {
   const carro = carros[index];
 
   try {
-    let resposta = await fetch(url, { 
-      method: "POST", 
-      body: JSON.stringify(carro), 
-      headers: { "Content-type": "application/json;charset=UTF8" } 
+    let resposta = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(carro),
+      headers: { "Content-type": "application/json;charset=UTF8" }
     });
 
     if (resposta.ok) {
@@ -145,7 +217,7 @@ async function alugar(index) {
 
         if (!conteudo) {
           alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " + 
+            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
             "n\u00E3o p\u00F4de ser interpretado"
           );
         } else {
@@ -155,7 +227,7 @@ async function alugar(index) {
         }
     } else {
         alert(
-          "Falha ao confirmar a loca&ccedil;&atilde;o!\n", 
+          "Falha ao confirmar a loca&ccedil;&atilde;o!\n",
           `Status da resposta: ${resposta.status}`,
           `Mensagem de status da resposta: ${resposta.statusText}`);
     }
@@ -180,7 +252,40 @@ function lerDatas() {
   return [inicio, fim];
 }
 
-async function main() {
+let filtros = {};
+let carros = [];
+let marcas = [];
+let modelos = [];
+
+function mostrarMarcas(cb) {
+  if(marcas.length == 0) {
+    return;
+  }
+  $("#marcas option").remove();
+  $("#marcas").append("<option id=''>Todas</option>");
+  for(let marca of marcas) {
+    $("#marcas").append("<option id='"+marca.nome+"'>"+marca.nome+"</option>");
+  }
+  if(cb) {
+    cb();
+  }
+}
+
+function mostrarModelos(cb) {
+  if(modelos.length == 0) {
+    return;
+  }
+  $("#modelos option").remove();
+  $("#modelos").append("<option id=''>Todos</option>");
+  for(let modelo of modelos) {
+    $("#modelos").append("<option id='"+modelo.nome+"'>"+modelo.nome+"</option>");
+  }
+  if(cb) {
+    cb();
+  }
+}
+
+$(document).ready(function() {
   // Testa se o servidor foi definido
   if (!servidor) {
     console.warn("Voc\u00EA precisa definir o endere\u00E7o do seu servidor no arquivo \'index.html\'");
@@ -190,8 +295,22 @@ async function main() {
   // Adiciona tratamento para o envio do formulário
   let form_filtros = document.getElementById("form_filtros");
   form_filtros.onsubmit = aoEnviarFormulario.bind(this);
-}
 
-let filtros = {};
-let carros = [];
-main();
+  marcas = carregaMarcas();
+  mostrarMarcas();
+
+  $("#marcas").change(function(){
+    var sel = $(this).val();
+    carregaModelos({nome: sel});
+    mostrarModelos(function() {
+      filtros = {}
+      if($("#marca").val().lenth > 0) {
+        filtros.marca = $("#marca").val()
+      }
+      if($("#modelo").val().lenth > 0) {
+        filtros.modelo = $("#modelo").val()
+      }
+      carregarCarros(filtros);
+    });
+  })
+})

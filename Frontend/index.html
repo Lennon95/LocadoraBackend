@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="main.css" />
-        <title>Locadora de Carros</title>
+      <link rel="stylesheet" href="main.css" />
+      <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+      <title>Locadora de Carros</title>
     </head>
 
     <body>
         <!-- Cabeçalho -->
         <header>
-            <h1>Locadora de Carros</h1>
+            <h1>Locadora Copstein - Rent a car</h1>
         </header>
 
         <!-- Corpo -->
@@ -32,6 +33,20 @@
 
                     <br />
 
+                    <div class="select-item">
+                      <label>Marcas</label>
+                      <select name="marca" id="marcas">
+                        <option selected disabled>Carregando</option>
+                      </select>
+                    </div>
+
+                    <div class="select-item">
+                      <label>Modelos</label>
+                      <select name="modelo" id="modelo">
+                        <option selected disabled>Selecione um mmodelo</option>
+                      </select>
+                    </div>
+
                     <div>
                         <input type="checkbox" name="arcondicionado" />
                         <label>Ar Condicionado</label>
@@ -50,7 +65,7 @@
                     <button type="submit">Buscar</button>
                 </form>
             </div>
-            
+
             <!-- Lista de Carros -->
             <div id="carros">
                 <div class="warning">Nenhum carro dispon&iacute;vel</div>
@@ -59,8 +74,8 @@
 
         <!-- Rodapé -->
         <footer>
-            <div>Servidor desenvolvido por [NOME DOS ALUNOS]</div>
-            <div>Cliente desenvolvido por Rafael Copstein</div>
+            <div>Servidor e cliente customizado por Tiago Luz, Rauf Rodrigues, Lennon da Silva</div>
+            <div>Cliente e servidor desenvolvido por Rafael Copstein</div>
         </footer>
 
         <!-- Scripts -->
@@ -68,7 +83,8 @@
             // ALTERE AQUI O ENDEREÇO DO SERVIDOR!
             var servidor = "http://localhost:8080";
         </script>
-
+        <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="main.js"></script>
     </body>
 </html>
