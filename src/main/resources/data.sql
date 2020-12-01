@@ -7,14 +7,14 @@ insert into marca (id, nome) values
     (5, 'Fiat'),
     (6, 'Jeep');
 
-insert into modelo (id, nome, idmarca) values 
-    (1, 'Cruze',1),
-    (2, 'Ethios',2),
-    (7, 'Corolla',2),
-    (3, 'F-1000',3),
-    (4, 'Sentra',4),
-    (5, 'Palio',5),
-    (6, 'Compass',6);
+insert into modelo (id, nome, idmarca,valor) values 
+    (1, 'Cruze',1, 100),
+    (2, 'Ethios',2, 80),
+    (7, 'Corolla',2 120),
+    (3, 'F-1000',3, 70),
+    (4, 'Sientra',4, 80),
+    (5, 'Palio',5 , 40),
+    (6, 'Compass',6, 200);
 
 insert into carro (id, placa, idmarca,  idmodelo, direcao, arcondicionado, cambioautomatico, km, cor) values 
     (1, 'APX-1232',  1, 1,   1, 1, 1,  0, 'Preto'),

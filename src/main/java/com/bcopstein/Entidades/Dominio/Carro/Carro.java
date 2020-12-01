@@ -2,7 +2,6 @@ package com.bcopstein.Entidades.Dominio.Carro;
 
 import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Carro {

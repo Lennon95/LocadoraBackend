@@ -10,7 +10,7 @@ public class Descontos2020 implements DescontoCalculator {
 
     @Override
     public float calcula(Cliente cliente, Carro carro, LocalDate inicio, LocalDate fim) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return carro.getModelo().getValor() * (float)0.10;
     }
 
     

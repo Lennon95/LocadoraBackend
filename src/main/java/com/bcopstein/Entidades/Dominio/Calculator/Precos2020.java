@@ -10,7 +10,7 @@ public class Precos2020 implements CustoCalculator{
 
     @Override
     public float calcula(Cliente cliente, Carro carro, LocalDate inicio, LocalDate fim) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return carro.getModelo().getValor();
     }
     
 }

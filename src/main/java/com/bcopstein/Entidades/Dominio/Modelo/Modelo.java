@@ -14,6 +14,7 @@ public class Modelo {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String nome;
+    private float valor; 
     
     @ManyToOne
     @JoinColumn(name="idmarca", nullable=false)
@@ -28,7 +29,7 @@ public class Modelo {
 
     @Override
     public String toString() {
-        return this.nome;
+        return this.getNome();
     }
 
     @Override
@@ -59,6 +60,27 @@ public class Modelo {
     }
 
     public void setIdmarca(Marca marca) {
+        this.setMarca(marca);
+    }
+
+    /**
+     * @return the valor
+     */
+    public float getValor() {
+        return valor;
+    }
+
+    /**
+     * @param valor the valor to set
+     */
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(Marca marca) {
         this.marca = marca;
     }
 }
