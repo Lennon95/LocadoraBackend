@@ -13,40 +13,13 @@ function carregaModelos(modelos) {
   }).done(modelos);
 }
 
-async function carregarCarros(filtros) {
-  let url = new URL(servidor + "/catalogo/carrosDisponiveis");
 
-  if (filtros) {
-    Object.keys(filtros)
-      .forEach(key => url.searchParams.append(key, filtros[key]));
-  }
-
-  try {
-    let resposta = await fetch(url);
-
-    if (resposta.ok) {
-        let conteudo = await resposta.json();
-
-        if (!conteudo) {
-          alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
-            "n\u00E3o p\u00F4de ser interpretado"
-          );
-        } else {
-          var lista = new Array(...conteudo);
-          return lista.map(x => x);
-        }
-    } else {
-        alert(
-          "Falha ao carregar os produtos!\n",
-          `Status da resposta: ${resposta.status}`,
-          `Mensagem de status da resposta: ${resposta.statusText}`);
-    }
-  } catch (erro) {
-    alert(erro);
-  }
-
-  return [];
+function carregarCarros(cb) {
+  $.ajax({
+    url: servidor + "/catalogo/carrosDisponiveis",
+    dataType: 'json',
+    data: { }
+  }).done(cb);
 }
 
 async function aoEnviarFormulario(e) {
@@ -78,23 +51,22 @@ async function aoEnviarFormulario(e) {
   }
 
   carros = await this.carregarCarros(filtros);
-  mostrarCarros(carros);
+  mostrarCarros();
   return false;
 }
 
-async function mostrarCarros(carros) {
-  let area_carros = document.querySelector("#carros");
-  while (area_carros.firstChild) {
-    area_carros.removeChild(area_carros.lastChild);
-  }
+async function mostrarCarros() {
+
+  $("#carros div").remove();
 
   if (!carros || carros.length === 0) {
     const div = document.createElement("div");
     div.innerHTML = "Nenhum carro dispon&iacute;vel";
     div.className = "warning";
-    area_carros.appendChild(div);
+    $("#carros").append(div);
     return;
   }
+
 
   let template = `
       <div class="carro">
@@ -115,13 +87,14 @@ async function mostrarCarros(carros) {
     `.trim();
 
   carros.forEach((carro, index) => {
+
     let temp = document.createElement("template");
     temp.innerHTML = template.replace("{0}", index);
 
     const elemento = temp.content.firstChild;
 
     const elemento_nome = elemento.querySelector("div h4");
-    elemento_nome.innerHTML = carro.marca + " - " + carro.modelo;
+    elemento_nome.innerHTML = carro.marca.nome + " - " + carro.modelo.nome;
 
     const elemento_placa = elemento.querySelector("div small");
     elemento_placa.innerHTML = carro.placa;
@@ -140,7 +113,7 @@ async function mostrarCarros(carros) {
     const elemento_caracteristicas = elemento.querySelector("h5");
     elemento_caracteristicas.innerHTML = caracteristicas.join("; ");
 
-    area_carros.appendChild(elemento);
+    $("#carros").append(elemento);
   });
 }
 
@@ -236,7 +209,10 @@ $(document).ready(function() {
   }
 
   $("#buscar").click(function(){
-    carregarCarros();
+    carregarCarros((cr)=>{
+      carros = cr;
+      mostrarCarros();
+    });
   })
 
   carregaMarcas((ms)=>{
