@@ -2,7 +2,7 @@ package com.bcopstein.Entidades.Dominio.Calculator;
 
 import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import com.bcopstein.Entidades.Dominio.Cliente.Cliente;
-import java.util.LocalDate;
+import java.time.LocalDate;
 
 public class SeguroBradesco implements SeguroCalculator{
 
