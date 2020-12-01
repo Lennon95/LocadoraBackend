@@ -52,6 +52,7 @@ public class ServicoLocacao {
         if (clts.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CLIENTE_NAO_ENCONTRADO);
 
+        // @TODO TERMINAR DE IMPLEMENTAR AQUI
         return true;
     }
 }
