@@ -1,4 +1,4 @@
-package com.bcopstein;
+package com.bcopstein.Interfaces;
 
 import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import com.bcopstein.Interfaces.DTO.DevolucaoConfirmacaoDTO;

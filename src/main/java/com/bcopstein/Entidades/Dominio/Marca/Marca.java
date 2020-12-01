@@ -1,5 +1,9 @@
 package com.bcopstein.Entidades.Dominio.Marca;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Marca {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
@@ -7,8 +11,7 @@ public class Marca {
     private String nome;
     private boolean isLuxo;
 
-    public Marca() {
-    }
+    public Marca(){}
 
     public Marca(String nome, boolean isLuxo) {
         this.nome = nome;
@@ -27,39 +30,27 @@ public class Marca {
         } else return false;
     }
 
-    /**
-     * @return the nome
-     */
-    public String getNome() {
-        return nome;
-    }
-
-    /**
-     * @param nome the nome to set
-     */
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    /**
-     * @return the isLuxo
-     */
-    public boolean isIsLuxo() {
-        return isLuxo;
-    }
-
-    /**
-     * @param isLuxo the isLuxo to set
-     */
-    public void setIsLuxo(boolean isLuxo) {
-        this.isLuxo = isLuxo;
-    }
-
     public Long getNroMarca() {
         return nroMarca;
     }
 
     public void setNroMarca(Long nroMarca) {
         this.nroMarca = nroMarca;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public boolean isLuxo() {
+        return isLuxo;
+    }
+
+    public void setLuxo(boolean isLuxo) {
+        this.isLuxo = isLuxo;
     }
 }

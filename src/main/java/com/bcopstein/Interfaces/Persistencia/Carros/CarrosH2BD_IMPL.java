@@ -15,7 +15,7 @@ public class CarrosH2BD_IMPL implements Carros {
     private CarrosH2BD_ITF carrosBD;
 
     @Autowired
-    public CarrosH2BD_IMPL(CarrosH2BD_ITF carrosBD){
+    public CarrosH2BD_IMPL(CarrosH2BD_ITF carrosBD) {
         this.carrosBD = carrosBD;
     }
 
@@ -54,6 +54,6 @@ public class CarrosH2BD_IMPL implements Carros {
 
     @Override
     public void remove(String placa) {
-        carrosBD.deleteById(placa);
+        carrosBD.deleteBy(placa);
     }
 }

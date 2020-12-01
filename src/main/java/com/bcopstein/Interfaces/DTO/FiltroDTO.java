@@ -1,13 +1,15 @@
 package com.bcopstein.Interfaces.DTO;
 
+import java.time.LocalDate;
+
 public class FiltroDTO {
-    private DataLocal inicioLocacao = new DataLocal();
-    private DataLocal fimLocacao = new DataLocal();
+    private LocalDate inicioLocacao = new DataLocal();
+    private LocalDate fimLocacao = new DataLocal();
     private boolean arcondicionado = false;
     private boolean direcao = false;
     private boolean cambio = false;
 
-    public FiltroDTO(DataLocal inicioLocacao, DataLocal fimLocacao, boolean arcondicionado, boolean direcao,
+    public FiltroDTO(LocalDate inicioLocacao, LocalDate fimLocacao, boolean arcondicionado, boolean direcao,
             boolean cambio) {
         this.inicioLocacao = inicioLocacao;
         this.fimLocacao = fimLocacao;
@@ -16,19 +18,19 @@ public class FiltroDTO {
         this.cambio = cambio;
     }
 
-    public DataLocal getInicioLocacao() {
+    public LocalDate getInicioLocacao() {
         return inicioLocacao;
     }
 
-    public void setInicioLocacao(DataLocal inicioLocacao) {
+    public void setInicioLocacao(LocalDate inicioLocacao) {
         this.inicioLocacao = inicioLocacao;
     }
 
-    public DataLocal getFimLocacao() {
+    public LocalDate getFimLocacao() {
         return fimLocacao;
     }
 
-    public void setFimLocacao(DataLocal fimLocacao) {
+    public void setFimLocacao(LocalDate fimLocacao) {
         this.fimLocacao = fimLocacao;
     }
 

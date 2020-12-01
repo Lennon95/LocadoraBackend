@@ -1,18 +1,21 @@
 package com.bcopstein.Entidades.Dominio.Modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Modelo {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long nroModelo;
     private String nome;
-    private Marca marca;
+    private Long nroMarca;
 
-    public Modelo() {
-    }
+    public Modelo(){}
 
-    public Modelo(String nome, Marca marca) {
+    public Modelo(String nome, Long nroMarca) {
         this.nome = nome;
-        this.marca = marca;
+        this.nroMarca = nroMarca;
     }
 
     @Override
@@ -26,35 +29,28 @@ public class Modelo {
             return (((Modelo) obj).getNome().equals(this.getNome()));
         } else return false;
     }
-    
-    
-    /**
-     * @return the nome
-     */
+
+    public Long getNroModelo() {
+        return nroModelo;
+    }
+
+    public void setNroModelo(Long nroModelo) {
+        this.nroModelo = nroModelo;
+    }
+
     public String getNome() {
         return nome;
     }
 
-    /**
-     * @param nome the nome to set
-     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
-    /**
-     * @return the marca
-     */
-    public Marca getMarca() {
-        return marca;
+    public Long getNroMarca() {
+        return nroMarca;
     }
 
-    /**
-     * @param marca the marca to set
-     */
-    public void setMarca(Marca marca) {
-        this.marca = marca;
+    public void setNroMarca(Long nroMarca) {
+        this.nroMarca = nroMarca;
     }
-    
-    
 }
