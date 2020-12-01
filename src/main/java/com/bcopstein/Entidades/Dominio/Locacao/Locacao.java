@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 
@@ -19,7 +20,9 @@ public class Locacao {
     private Long nroLocacao;
     
     @ManyToOne
+    @JoinColumn(name="idcarro", nullable=false)
     private Carro carro;
+    
     private LocalDate inicio;
     private LocalDate fim;
     private boolean devolvido;
@@ -32,7 +35,9 @@ public class Locacao {
     private Long fmfinal;
     
     @ManyToOne
+    @JoinColumn(name="idcliente", nullable=false)
     private Cliente cliente;
+    
     private float valorPrePago;
 
     public Locacao(){}

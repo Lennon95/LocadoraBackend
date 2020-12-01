@@ -57,7 +57,7 @@ public class ServicoCatalogo {
                                  .filter((Carro c) -> c.isCambioAutomatico() == direcao)
                                  .filter((Carro c) -> {
                                      for (Locacao loc: locs) {
-                                        if (loc.getCarro().equals(c))
+                                        if (loc.getCarro().getId() == c.getId())
                                             return false;
                                      }
                                      return true;
@@ -74,7 +74,7 @@ public class ServicoCatalogo {
         Collection<Marca> mcs = this.marcas.pesquisa((Marca m) -> m.getId() == nroMarca);
         return this.modelos.todos()
                            .stream()
-                           .filter((Modelo m) -> m.getIdmarca()== nroMarca)
+                           .filter((Modelo m) -> m.getMarca().getId() == nroMarca)
                            .collect(Collectors.toList());
     }
 }

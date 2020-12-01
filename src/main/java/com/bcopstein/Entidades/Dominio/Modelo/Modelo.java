@@ -1,9 +1,12 @@
 package com.bcopstein.Entidades.Dominio.Modelo;
 
+import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Modelo {
@@ -11,13 +14,16 @@ public class Modelo {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String nome;
-    private Long idmarca;
+    
+    @ManyToOne
+    @JoinColumn(name="idmarca", nullable=false)
+    private Marca marca;
 
     public Modelo(){}
 
-    public Modelo(String nome, Long idmarca) {
+    public Modelo(String nome, Marca marca) {
         this.nome = nome;
-        this.idmarca = idmarca;
+        this.marca = marca;
     }
 
     @Override
@@ -48,11 +54,11 @@ public class Modelo {
         this.nome = nome;
     }
 
-    public Long getIdmarca() {
-        return idmarca;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setIdmarca(Long idmarca) {
-        this.idmarca = idmarca;
+    public void setIdmarca(Marca marca) {
+        this.marca = marca;
     }
 }

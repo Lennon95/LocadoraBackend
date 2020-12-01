@@ -1,9 +1,14 @@
 package com.bcopstein.Entidades.Dominio.Carro;
 
+import com.bcopstein.Entidades.Dominio.Marca.Marca;
+import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Carro {
@@ -13,8 +18,15 @@ public class Carro {
     private long id;
     
     private String placa;
-    private Long nroMarca;
-    private Long nroModelo;
+    
+    @ManyToOne
+    @JoinColumn(name="idmarca", nullable=false)
+    private Marca marca;
+    
+    @ManyToOne
+    @JoinColumn(name="idmodelo", nullable=false)
+    private Modelo modelo;
+    
     private boolean arCondicionado;
     private boolean direcao;
     private boolean cambioAutomatico;
@@ -23,10 +35,10 @@ public class Carro {
 
     public Carro(){}
     
-    public Carro(String placa, Long nroMarca, Long nroModelo, boolean arCondicionado, boolean direcao, boolean cambioAutomatico) {
+    public Carro(String placa, Marca marca, Modelo modelo, boolean arCondicionado, boolean direcao, boolean cambioAutomatico) {
         this.placa = placa;
-        this.nroMarca = nroMarca;
-        this.nroModelo = nroModelo;
+        this.marca = marca;
+        this.modelo = modelo;
         this.arCondicionado = arCondicionado;
         this.direcao = direcao;
         this.cambioAutomatico = cambioAutomatico;
@@ -35,7 +47,7 @@ public class Carro {
     @Override
     public String toString() {
         return "Carro [hasArCondicionado=" + isArCondicionado() + ", HasCambioautomatico=" + isCambioAutomatico() + ", hasDirecao="
-                + isDirecao() + ", marca=" + getNroMarca() + ", modelo=" + getNroModelo() + ", placa=" + getPlaca() + "]";
+                + isDirecao() + ", marca=" + getMarca() + ", modelo=" + getModelo() + ", placa=" + getPlaca() + "]";
     } 
 
     @Override
@@ -55,20 +67,20 @@ public class Carro {
         this.placa = placa;
     }
 
-    public Long getNroMarca() {
-        return nroMarca;
+    public Marca getMarca() {
+        return marca;
     }
 
-    public void setNroMarca(Long nroMarca) {
-        this.nroMarca = nroMarca;
+    public void setNroMarca(Marca marca) {
+        this.marca = marca;
     }
 
-    public Long getNroModelo() {
-        return nroModelo;
+    public Modelo getModelo() {
+        return modelo;
     }
 
-    public void setNroModelo(Long nroModelo) {
-        this.nroModelo = nroModelo;
+    public void setModelo(Modelo modelo) {
+        this.modelo = modelo;
     }
 
     public boolean isArCondicionado() {
