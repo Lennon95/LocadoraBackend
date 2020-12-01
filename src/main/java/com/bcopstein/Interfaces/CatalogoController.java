@@ -5,10 +5,8 @@ import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 import com.bcopstein.Entidades.Servicos.ServicoCatalogo;
 import com.bcopstein.Interfaces.DTO.FiltroDTO;
-import java.time.LocalDate;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,13 +28,16 @@ public class CatalogoController {
     @GetMapping("/carrosDisponiveis")
     @CrossOrigin(origins = "*")
     public Collection<Carro> carrosDisponiveis(FiltroDTO filtro) {
+        
         if(filtro == null) {
             return this.servico.listaCarrosDisponiveis(
                 null,
                 null,
                 false,
                 false,
-                false
+                false,
+                0,
+                0
             );
         } else {
             return this.servico.listaCarrosDisponiveis(
@@ -44,7 +45,9 @@ public class CatalogoController {
                 filtro.getFimLocacao(),
                 filtro.isArcondicionado(),
                 filtro.isDirecao(),
-                filtro.isCambio()
+                filtro.isCambio(),
+                filtro.getIdmarca(),
+                filtro.getIdmodelo()
             );
         }
         

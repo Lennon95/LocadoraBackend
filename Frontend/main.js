@@ -184,7 +184,7 @@ function mostrarMarcas(cb) {
     return;
   }
   $("#marcas option").remove();
-  $("#marcas").append("<option id=''>Todas</option>");
+  $("#marcas").append("<option value='0'>Todas</option>");
   marcas.forEach((marca, index) => {
     $("#marcas").append("<option value='"+marca.id+"'>"+marca.nome+"</option>");
   });
@@ -198,7 +198,7 @@ function mostrarModelos(cb) {
     return;
   }
   $("#modelos option").remove();
-  $("#modelos").append("<option id=''>Todos</option>");
+  $("#modelos").append("<option value='0'>Todos</option>");
   modelos.forEach((modelo, index) => {
     $("#modelos").append("<option value='"+modelo.id+"'>"+modelo.nome+"</option>");
   });

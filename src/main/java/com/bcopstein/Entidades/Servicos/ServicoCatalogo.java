@@ -17,9 +17,7 @@ import com.bcopstein.Entidades.Repositorio.Locacoes;
 import com.bcopstein.Entidades.Repositorio.Marcas;
 import com.bcopstein.Entidades.Repositorio.Modelos;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Component
 public class ServicoCatalogo {
@@ -37,31 +35,18 @@ public class ServicoCatalogo {
 
     public List<Carro> listaCarrosDisponiveis(LocalDate inicioLocacao, LocalDate fimLocacao,
                                               boolean arcondicionado, boolean direcao,
-                                              boolean cambio) {
+                                              boolean cambio,
+                                              long idmarca, 
+                                              long idmodelo) {
         
-        if(inicioLocacao == null || fimLocacao == null) {
-             return this.carros.todos().stream().collect(Collectors.toList());
-        }
-        
-        if (inicioLocacao.compareTo(fimLocacao) < 0)
-            throw new SistLocacaoException(SistLocacaoException.Causa.DATA_INVALIDA);
-            
-        Collection<Locacao> locs = this.locacoes
-                                 .pesquisa((Locacao l) -> l.getInicio().compareTo(inicioLocacao) > 0 && l.getFim().compareTo(fimLocacao) < 0);
-
         List<Carro> carros = this.carros                                 
                                  .todos()
                                  .stream()
                                  .filter((Carro c) -> c.isArcondicionado() == arcondicionado)
                                  .filter((Carro c) -> c.isDirecao() == direcao)
                                  .filter((Carro c) -> c.isCambioautomatico() == direcao)
-                                 .filter((Carro c) -> {
-                                     for (Locacao loc: locs) {
-                                        if (loc.getCarro().getId() == c.getId())
-                                            return false;
-                                     }
-                                     return true;
-                                 })
+                                 .filter((Carro c) -> idmarca == 0 || c.getMarca().getId() == idmarca)
+                                    .filter((Carro c) -> idmodelo == 0 || c.getModelo().getId() == idmodelo)
                                  .collect(Collectors.toList());
         return carros;
     }
