@@ -9,6 +9,7 @@ insert into marca (id, nome) values
 
 insert into modelo (id, nome, idmarca, valor) values 
     (1, 'Cruze',1, 100.0),
+    (8, 'Onix', 1, 60.0),
     (2, 'Ethios',2, 80.0),
     (7, 'Corolla',2, 120.0),
     (3, 'F-1000',3, 70.0),
@@ -26,7 +27,12 @@ insert into carro (id, placa, idmarca,  idmodelo, direcao, arcondicionado, cambi
     (6, 'APX-2020',  2, 2,   1, 1, 1,  0, 'Branco'),
     (7, 'APX-2021',  2, 2,   1, 1, 1,  0, 'Branco'),
     (8, 'APX-2022',  2, 7,   1, 1, 1,  0, 'Prata'),
-    (9, 'APX-2023',  2, 7,   1, 1, 1,  0, 'Prata');
+    (9, 'APX-2023',  2, 7,   1, 1, 1,  0, 'Prata'),
+
+    (10, 'APX-2026',  1, 8,   1, 1, 0,  0, 'Branco'),
+    (11, 'APX-2027',  1, 8,   1, 1, 0,  0, 'Branco'),
+    (12, 'APX-2028',  5, 5,   1, 1, 0,  0, 'Prata'),
+    (13, 'APX-2029',  5, 5,   1, 1, 0,  0, 'Prata');
 
 insert into cliente (id, documento, nome, endereco, locacoesfeitas, estcivil, datanascimento) 
     values 
