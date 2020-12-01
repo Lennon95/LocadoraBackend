@@ -20,12 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/catalogo")
 public class CatalogoController {
-    private ServicoCatalogo servico;
     private ControleCatalogo catalogo;
 
     @Autowired
-    public CatalogoController(ServicoCatalogo servico, ControleCatalogo catalogo) {
-      this.servico = servico;
+    public CatalogoController(ControleCatalogo catalogo) {
       this.catalogo = catalogo;
     }  
 
@@ -38,12 +36,12 @@ public class CatalogoController {
     @GetMapping("/marcas")
     @CrossOrigin(origins = "*")
     public Collection<Marca> listaMarcas() {
-        return this.servico.listaMarcas();
+        return this.catalogo.listaMarcas();
     }
 
     @GetMapping("/modelos")
     @CrossOrigin(origins = "*")
     public Collection<Modelo> listaModelos(@RequestParam("id") Long nroMarca) {
-        return this.servico.listaModelosMarca(nroMarca);
+        return this.catalogo.listaModelosMarca(nroMarca);
     }    
 }

@@ -3,6 +3,8 @@ package com.bcopstein.CasosDeUso;
 import com.bcopstein.Entidades.Servicos.ServicoLocacao;
 import com.bcopstein.Entidades.Servicos.ServicoCatalogo;
 import com.bcopstein.Entidades.Dominio.Carro.Carro;
+import com.bcopstein.Entidades.Dominio.Marca.Marca;
+import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 
 import com.bcopstein.Interfaces.DTO.FiltroDTO;
 import com.bcopstein.Interfaces.DTO.CarrosDTO;
@@ -64,5 +66,13 @@ public class ControleCatalogo {
                 filtro.getIdmodelo()
             );
         }
+    }
+
+    public Collection<Marca> listaMarcas() {
+        return this.servicoCat.listaMarcas();
+    }
+
+    public Collection<Modelo> listaModelosMarca(Long nroMarca) {
+        return this.servicoCat.listaModelosMarca(nroMarca);
     }
 }
