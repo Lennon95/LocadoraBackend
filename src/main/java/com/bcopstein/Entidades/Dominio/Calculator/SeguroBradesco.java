@@ -14,7 +14,7 @@ public class SeguroBradesco implements SeguroCalculator{
         } else {
             int anoNasc = cliente.getDataNascimento().getYear();
             int anoAtual = Calendar.getInstance().get(Calendar.YEAR);
-            if(anoAtual - anoAtual > 30)  {
+            if(anoAtual - anoNasc > 30)  {
                 return carro.getModelo().getValor() * (float)0.10;        
             } else {
                 return carro.getModelo().getValor() * (float)0.18;        
