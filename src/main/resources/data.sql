@@ -15,9 +15,9 @@ insert into modelo (id, nome, idmarca) values
     (5, 'Palio',5),
     (6, 'Compass',6);
 
-insert into carro (id, placa, idmarca, idmodelo, arCondicionado, direcao, cambioAutomatico, km, cor) values 
-    (1, "APX-1232", 1, 1, 1, 1, 1, 0, 'Preto'),
-    (2, "APX-1233", 1, 1, 1, 1, 1, 0, 'Preto'),
-    (3, "APX-1234", 1, 1, 1, 1, 1, 0, 'Preto'),
-    (4, "APX-1235", 1, 1, 1, 1, 1 0, 'Preto'),
-    (5, "APX-1236", 1, 1, 1, 1, 1, 0, 'Preto');
+insert into carro (id, placa, idmarca,  idmodelo, direcao, arcondicionado, cambioautomatico, km, cor) values 
+    (1, 'APX-1232',  1, 1,   1, 1, 1,  0, 'Preto'),
+    (2, 'APX-1233',  1, 1,   1, 1, 1,  0, 'Preto'),
+    (3, 'APX-1234',  1, 1,   1, 1, 1,  0, 'Preto'),
+    (4, 'APX-1235',  1, 1,   1, 1, 1,  0, 'Preto'),
+    (5, 'APX-1236',  1, 1,   1, 1, 1,  0, 'Preto');

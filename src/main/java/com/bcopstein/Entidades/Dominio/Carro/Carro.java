@@ -30,31 +30,31 @@ public class Carro {
     private Modelo modelo;
     
     @Column(columnDefinition = "boolean default false")
-    private boolean arCondicionado;
+    private boolean arcondicionado;
     
     @Column(columnDefinition = "boolean default false")
     private boolean direcao;
     
     @Column(columnDefinition = "boolean default false")
-    private boolean cambioAutomatico;
+    private boolean cambioautomatico;
     
     private Long km;
     private String cor;
 
     public Carro(){}
     
-    public Carro(String placa, Marca marca, Modelo modelo, boolean arCondicionado, boolean direcao, boolean cambioAutomatico) {
+    public Carro(String placa, Marca marca, Modelo modelo, boolean arcondicionado, boolean direcao, boolean cambioautomatico) {
         this.placa = placa;
         this.marca = marca;
         this.modelo = modelo;
-        this.arCondicionado = arCondicionado;
+        this.arcondicionado = arcondicionado;
         this.direcao = direcao;
-        this.cambioAutomatico = cambioAutomatico;
+        this.cambioautomatico = cambioautomatico;
     }
 
     @Override
     public String toString() {
-        return "Carro [hasArCondicionado=" + isArCondicionado() + ", HasCambioautomatico=" + isCambioAutomatico() + ", hasDirecao="
+        return "Carro [hasArCondicionado=" + isArcondicionado() + ", HasCambioautomatico=" + isCambioautomatico() + ", hasDirecao="
                 + isDirecao() + ", marca=" + getMarca() + ", modelo=" + getModelo() + ", placa=" + getPlaca() + "]";
     } 
 
@@ -91,12 +91,12 @@ public class Carro {
         this.modelo = modelo;
     }
 
-    public boolean isArCondicionado() {
-        return arCondicionado;
+    public boolean isArcondicionado() {
+        return arcondicionado;
     }
 
-    public void setArCondicionado(boolean arCondicionado) {
-        this.arCondicionado = arCondicionado;
+    public void setArcondicionado(boolean arcondicionado) {
+        this.arcondicionado = arcondicionado;
     }
 
     public boolean isDirecao() {
@@ -107,12 +107,12 @@ public class Carro {
         this.direcao = direcao;
     }
 
-    public boolean isCambioAutomatico() {
-        return cambioAutomatico;
+    public boolean isCambioautomatico() {
+        return cambioautomatico;
     }
 
-    public void setCambioAutomatico(boolean cambioAutomatico) {
-        this.cambioAutomatico = cambioAutomatico;
+    public void setCambioAutomatico(boolean cambioautomatico) {
+        this.cambioautomatico = cambioautomatico;
     }
 
     public Long getKm() {

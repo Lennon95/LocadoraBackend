@@ -52,9 +52,9 @@ public class ServicoCatalogo {
         List<Carro> carros = this.carros                                 
                                  .todos()
                                  .stream()
-                                 .filter((Carro c) -> c.isArCondicionado() == arcondicionado)
+                                 .filter((Carro c) -> c.isArcondicionado() == arcondicionado)
                                  .filter((Carro c) -> c.isDirecao() == direcao)
-                                 .filter((Carro c) -> c.isCambioAutomatico() == direcao)
+                                 .filter((Carro c) -> c.isCambioautomatico() == direcao)
                                  .filter((Carro c) -> {
                                      for (Locacao loc: locs) {
                                         if (loc.getCarro().getId() == c.getId())
