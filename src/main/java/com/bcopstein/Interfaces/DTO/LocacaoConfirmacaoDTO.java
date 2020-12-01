@@ -1,6 +1,6 @@
 package com.bcopstein.Interfaces.DTO;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class LocacaoConfirmacaoDTO {
     private int codigo;
@@ -8,20 +8,18 @@ public class LocacaoConfirmacaoDTO {
     private float valorSeguro;
     private float valorDesconto;
     private float subtotal;
-    private float valorPrePago;
     private float totalPagar;
-    private Date dataDevolucao;  
+    private LocalDate dataDevolucao;  
 
     public LocacaoConfirmacaoDTO() {
     }
 
-    public LocacaoConfirmacaoDTO(int codigo, boolean confirmado, float valorSeguro, float valorDesconto, float subtotal, float valorPrePago, float totalPagar, Date dataDevolucao) {
+    public LocacaoConfirmacaoDTO(int codigo, boolean confirmado, float valorSeguro, float valorDesconto, float subtotal, float totalPagar, LocalDate dataDevolucao) {
         this.codigo = codigo;
         this.confirmado = confirmado;
         this.valorSeguro = valorSeguro;
         this.valorDesconto = valorDesconto;
         this.subtotal = subtotal;
-        this.valorPrePago = valorPrePago;
         this.totalPagar = totalPagar;
         this.dataDevolucao = dataDevolucao;
     }
@@ -97,20 +95,6 @@ public class LocacaoConfirmacaoDTO {
     }
 
     /**
-     * @return the valorPrePago
-     */
-    public float getValorPrePago() {
-        return valorPrePago;
-    }
-
-    /**
-     * @param valorPrePago the valorPrePago to set
-     */
-    public void setValorPrePago(float valorPrePago) {
-        this.valorPrePago = valorPrePago;
-    }
-
-    /**
      * @return the totalPagar
      */
     public float getTotalPagar() {
@@ -127,14 +111,14 @@ public class LocacaoConfirmacaoDTO {
     /**
      * @return the dataDevolucao
      */
-    public Date getDataDevolucao() {
+    public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
 
     /**
      * @param dataDevolucao the dataDevolucao to set
      */
-    public void setDataDevolucao(Date dataDevolucao) {
+    public void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
     

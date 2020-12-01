@@ -43,16 +43,26 @@ public class ServicoLocacao {
         this.custoCalc = custoCalc;
     }
 
-    public boolean locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
+    public Locacao locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
         Collection<Carro> cars = this.carros.pesquisa((Carro c) -> c.getPlaca() == placaCarro);
         if (cars.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CARRO_NAO_ENCONTRADO);
+        Carro carro = cars.toArray(new Carro[0])[0];
 
         Collection<Cliente> clts = this.clientes.pesquisa((Cliente c) -> c.getDocumento() == docCliente);
         if (clts.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CLIENTE_NAO_ENCONTRADO);
+        Cliente cliente = clts.toArray(new Cliente[0])[0];
 
-        // @TODO TERMINAR DE IMPLEMENTAR AQUI
-        return true;
+        float custo = this.custoCalc.calcula(cliente, carro, inicio, fim);
+        float seguro = this.segCalc.calcula(cliente, carro, inicio, fim);
+        float descontos = this.descCalc.calcula(cliente, carro, inicio, fim);
+
+        Locacao locacao = new Locacao(carro, inicio, fim, false, null, (custo + seguro) - descontos, cliente);
+        cliente.setLocacoesFeitas(cliente.getLocacoesFeitas() +1);
+
+        this.locacoes.cadastra(locacao);
+        this.clientes.atualiza(cliente);
+        return locacao;
     }
 }
