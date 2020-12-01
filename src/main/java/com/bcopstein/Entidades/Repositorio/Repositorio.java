@@ -4,8 +4,6 @@ import java.util.Collection;
 import java.util.function.Predicate;
 
 public interface Repositorio<E, K> {
-    void carrega();
-    void persiste();
     void cadastra(E elemento);
     E recupera(K chave);
     Collection<E> todos();

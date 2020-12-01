@@ -1,6 +1,9 @@
-package com.bcopstein.Entidades.Dominio.Carro;
+package com.bcopstein.Entidades.Dominio.Marca;
 
 public class Marca {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long nroMarca;
     private String nome;
     private boolean isLuxo;
 
@@ -51,9 +54,12 @@ public class Marca {
     public void setIsLuxo(boolean isLuxo) {
         this.isLuxo = isLuxo;
     }
-    
-    
-    
-    
-    
+
+    public Long getNroMarca() {
+        return nroMarca;
+    }
+
+    public void setNroMarca(Long nroMarca) {
+        this.nroMarca = nroMarca;
+    }
 }

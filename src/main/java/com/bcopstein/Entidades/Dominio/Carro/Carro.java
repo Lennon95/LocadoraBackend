@@ -1,8 +1,12 @@
 package com.bcopstein.Entidades.Dominio.Carro;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Carro {
+    @Id
     private String placa;
     private Marca marca;
     private Modelo modelo;

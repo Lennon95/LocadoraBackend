@@ -1,12 +1,16 @@
 package com.bcopstein.Entidades.Dominio.Cliente;
 
 import java.util.Date;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
+@Entity
 public class Cliente {
     
     enum ESTADO_CIVIL {CASADO, SOLTEIRO, DIVORCIADO};
     
     private String nome;
+    @Id
     private String documento;
     private String endereco;
     private int locacoesFeitas;

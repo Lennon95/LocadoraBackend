@@ -3,8 +3,13 @@ package com.bcopstein.Entidades.Dominio.Locacao;
 import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import com.bcopstein.Entidades.Dominio.Cliente.Cliente;
 import java.util.Date;
+import javax.persistence.Entity;
 
+@Entity
 public class Locacao {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long nroLocacao;
     private Carro carro;
     private Date inicio;
     private Date fim;

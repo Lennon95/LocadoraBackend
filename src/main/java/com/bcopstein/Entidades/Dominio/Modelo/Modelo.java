@@ -1,6 +1,9 @@
-package com.bcopstein.Entidades.Dominio.Carro;
+package com.bcopstein.Entidades.Dominio.Modelo;
 
 public class Modelo {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Long nroModelo;
     private String nome;
     private Marca marca;
 
