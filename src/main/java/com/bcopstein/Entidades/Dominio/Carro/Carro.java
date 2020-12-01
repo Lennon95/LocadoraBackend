@@ -11,25 +11,26 @@ public class Carro {
     private Long nroModelo;
     private boolean arCondicionado;
     private boolean direcao;
-    private boolean cambioautomatico;
+    private boolean cambioAutomatico;
     private Long km;
     private String cor;
 
     public Carro(){}
     
-    public Carro(String placa, Long nroMarca, Long nroModelo, boolean arCondicionado, boolean hasDirecao, boolean HasCambioautomatico) {
+    public Carro(String placa, Long nroMarca, Long nroModelo, boolean arCondicionado, boolean direcao, boolean cambioAutomatico) {
         this.placa = placa;
         this.nroMarca = nroMarca;
         this.nroModelo = nroModelo;
         this.arCondicionado = arCondicionado;
-        this.direcao = hasDirecao;
-        this.cambioautomatico = HasCambioautomatico;
+        this.direcao = direcao;
+        this.cambioAutomatico = cambioAutomatico;
+        this.disponivel = true;
     }
 
     @Override
     public String toString() {
-        return "Carro [hasArCondicionado=" + isHasArCondicionado() + ", HasCambioautomatico=" + isHasCambioautomatico() + ", hasDirecao="
-                + isHasDirecao() + ", marca=" + getMarca() + ", modelo=" + getModelo() + ", placa=" + getPlaca() + "]";
+        return "Carro [hasArCondicionado=" + isArCondicionado() + ", HasCambioautomatico=" + isCambioAutomatico() + ", hasDirecao="
+                + isDirecao() + ", marca=" + getNroMarca() + ", modelo=" + getNroModelo() + ", placa=" + getPlaca() + "]";
     } 
 
     @Override
@@ -89,12 +90,12 @@ public class Carro {
         this.direcao = direcao;
     }
 
-    public boolean isCambioautomatico() {
-        return cambioautomatico;
+    public boolean isCambioAutomatico() {
+        return cambioAutomatico;
     }
 
-    public void setCambioautomatico(boolean cambioautomatico) {
-        this.cambioautomatico = cambioautomatico;
+    public void setCambioAutomatico(boolean cambioAutomatico) {
+        this.cambioAutomatico = cambioAutomatico;
     }
 
     public Long getKm() {
