@@ -220,9 +220,9 @@ function mostrarModelos(cb) {
   }
   $("#modelos option").remove();
   $("#modelos").append("<option id=''>Todos</option>");
-  for(let modelo of modelos) {
+  modelos.forEach((modelo, index) => {
     $("#modelos").append("<option value='"+modelo.id+"'>"+modelo.nome+"</option>");
-  }
+  });
   if(cb) {
     cb();
   }
@@ -235,9 +235,9 @@ $(document).ready(function() {
     return;
   }
 
-  // Adiciona tratamento para o envio do formulário
-  let form_filtros = document.getElementById("form_filtros");
-  form_filtros.onsubmit = aoEnviarFormulario.bind(this);
+  $("#buscar").click(function(){
+    carregarCarros();
+  })
 
   carregaMarcas((ms)=>{
     marcas = ms;

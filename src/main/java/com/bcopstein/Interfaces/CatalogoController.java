@@ -60,7 +60,6 @@ public class CatalogoController {
     @GetMapping("/modelos")
     @CrossOrigin(origins = "*")
     public Collection<Modelo> listaModelos(@RequestParam("id") Long nroMarca) {
-        
         return this.servico.listaModelosMarca(nroMarca);
     }
     
