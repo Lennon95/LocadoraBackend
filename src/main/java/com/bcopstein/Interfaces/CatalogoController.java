@@ -4,7 +4,9 @@ import com.bcopstein.Entidades.Dominio.Carro.Carro;
 import com.bcopstein.Entidades.Dominio.Marca.Marca;
 import com.bcopstein.Entidades.Dominio.Modelo.Modelo;
 import com.bcopstein.Entidades.Servicos.ServicoCatalogo;
+import com.bcopstein.CasosDeUso.ControleCatalogo;
 import com.bcopstein.Interfaces.DTO.FiltroDTO;
+import com.bcopstein.Interfaces.DTO.CarrosDTO;
 
 import java.util.Collection;
 
@@ -18,53 +20,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RestController
 @RequestMapping("/catalogo")
 public class CatalogoController {
-    private ServicoCatalogo servico;
+    private ControleCatalogo catalogo;
 
     @Autowired
-    public CatalogoController(ServicoCatalogo servico) {
-      this.servico = servico;
+    public CatalogoController(ControleCatalogo catalogo) {
+      this.catalogo = catalogo;
     }  
 
     @GetMapping("/carrosDisponiveis")
     @CrossOrigin(origins = "*")
-    public Collection<Carro> carrosDisponiveis(FiltroDTO filtro) {
-        
-        if(filtro == null) {
-            return this.servico.listaCarrosDisponiveis(
-                null,
-                null,
-                false,
-                false,
-                false,
-                0,
-                0
-            );
-        } else {
-            return this.servico.listaCarrosDisponiveis(
-                filtro.getInicioLocacao(),
-                filtro.getFimLocacao(),
-                filtro.isArcondicionado(),
-                filtro.isDirecao(),
-                filtro.isCambio(),
-                filtro.getIdmarca(),
-                filtro.getIdmodelo()
-            );
-        }
-        
+    public Collection<CarrosDTO> carrosDisponiveis(FiltroDTO filtro) {
+        return this.catalogo.carrosDisponiveis(filtro);                
     }
     
     @GetMapping("/marcas")
     @CrossOrigin(origins = "*")
     public Collection<Marca> listaMarcas() {
-        return this.servico.listaMarcas();
+        return this.catalogo.listaMarcas();
     }
-    
-    
+
     @GetMapping("/modelos")
     @CrossOrigin(origins = "*")
     public Collection<Modelo> listaModelos(@RequestParam("id") Long nroMarca) {
-        return this.servico.listaModelosMarca(nroMarca);
-    }
-    
-    
+        return this.catalogo.listaModelosMarca(nroMarca);
+    }    
 }

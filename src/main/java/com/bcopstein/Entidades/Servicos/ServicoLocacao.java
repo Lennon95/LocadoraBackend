@@ -54,15 +54,23 @@ public class ServicoLocacao {
             throw new SistLocacaoException(SistLocacaoException.Causa.CLIENTE_NAO_ENCONTRADO);
         Cliente cliente = clts.toArray(new Cliente[0])[0];
 
-        float custo = this.custoCalc.calcula(cliente, carro, inicio, fim);
-        float seguro = this.segCalc.calcula(cliente, carro, inicio, fim);
-        float descontos = this.descCalc.calcula(cliente, carro, inicio, fim);
+        float[] custos = this.calculaCustos(carro, cliente, inicio, fim);
 
-        Locacao locacao = new Locacao(carro, inicio, fim, false, null, (custo + seguro) - descontos, cliente);
+        Locacao locacao = new Locacao(carro, inicio, fim, false, null, custos[3], cliente);
         cliente.setLocacoesFeitas(cliente.getLocacoesFeitas() +1);
 
         this.locacoes.cadastra(locacao);
         this.clientes.atualiza(cliente);
         return locacao;
     }
+
+    public float[] calculaCustos(Carro carro, Cliente cliente, LocalDate inicio, LocalDate fim) {
+        float[] dados = new float[4];
+        dados[0] = this.custoCalc.calcula(cliente, carro, inicio, fim);
+        dados[1] = this.segCalc.calcula(cliente, carro, inicio, fim);
+        dados[2] = this.descCalc.calcula(cliente, carro, inicio, fim);
+        dados[3] = ((dados[0] + dados[1]) - dados[2]);
+        return dados;
+    }
+
 }
