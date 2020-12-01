@@ -1,8 +1,11 @@
 package com.bcopstein.Entidades.Servicos;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicReference;
 import java.time.LocalDate;
 
 import com.bcopstein.Entidades.SistLocacaoException;
@@ -17,7 +20,10 @@ import com.bcopstein.Entidades.Repositorio.Locacoes;
 import com.bcopstein.Entidades.Repositorio.Marcas;
 import com.bcopstein.Entidades.Repositorio.Modelos;
 
+import org.hibernate.action.internal.CollectionAction;
 import org.springframework.stereotype.Component;
+
+import ch.qos.logback.core.joran.conditional.ElseAction;
 
 @Component
 public class ServicoCatalogo {
@@ -38,15 +44,29 @@ public class ServicoCatalogo {
                                               boolean cambio,
                                               long idmarca, 
                                               long idmodelo) {
-        
-        List<Carro> carros = this.carros                                 
+                                                  
+        final Collection<Locacao> locs;
+        if (inicioLocacao != null && fimLocacao != null) {
+            locs = this.locacoes.pesquisa((Locacao l) -> l.getInicio().compareTo(inicioLocacao) > 0 && l.getFim().compareTo(fimLocacao) < 0);
+        } else {
+            locs = new ArrayList<Locacao>();
+        }
+
+        List<Carro> carros = this.carros
                                  .todos()
                                  .stream()
                                  .filter((Carro c) -> c.isArcondicionado() == arcondicionado)
                                  .filter((Carro c) -> c.isDirecao() == direcao)
                                  .filter((Carro c) -> c.isCambioautomatico() == direcao)
                                  .filter((Carro c) -> idmarca == 0 || c.getMarca().getId() == idmarca)
-                                    .filter((Carro c) -> idmodelo == 0 || c.getModelo().getId() == idmodelo)
+                                 .filter((Carro c) -> idmodelo == 0 || c.getModelo().getId() == idmodelo)
+                                 .filter((Carro c) -> {
+                                    for (Locacao loc: locs) {
+                                       if (loc.getCarro().equals(c))
+                                           return false;
+                                    }
+                                    return true;
+                                 })
                                  .collect(Collectors.toList());
         return carros;
     }
