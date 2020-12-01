@@ -92,7 +92,9 @@ async function mostrarCarros() {
       </div>
     `.trim();
 
-  carros.forEach((carro, index) => {
+  carros.forEach((item, index) => {
+
+    let carro = item.carro;
 
     let temp = document.createElement("template");
     temp.innerHTML = template.replace("{0}", index);
@@ -106,10 +108,10 @@ async function mostrarCarros() {
     elemento_placa.innerHTML = carro.placa;
 
     const elementos_preco = elemento.querySelectorAll("div p");
-    elementos_preco[0].innerHTML = "Custo: R$ " + carro.custoLocacao;
-    elementos_preco[1].innerHTML = "Seguro: R$ " + carro.seguro;
-    elementos_preco[2].innerHTML = "Desconto: R$ " + carro.desconto;
-    elementos_preco[3].innerHTML = "Total: R$ " + carro.totalPagar;
+    elementos_preco[0].innerHTML = "Custo: R$ " + item.custo;
+    elementos_preco[1].innerHTML = "Seguro: R$ " + item.seguro;
+    elementos_preco[2].innerHTML = "Desconto: R$ " + item.descontos;
+    elementos_preco[3].innerHTML = "Total: R$ " + item.total;
 
     let caracteristicas = [];
     if (carro.arcondicionado) caracteristicas.push("Ar Condicionado");
