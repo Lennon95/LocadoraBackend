@@ -9,6 +9,9 @@ public class FiltroDTO {
     private boolean direcao = false;
     private boolean cambio = false;
 
+    public FiltroDTO() {
+    }
+    
     public FiltroDTO(LocalDate inicioLocacao, LocalDate fimLocacao, boolean arcondicionado, boolean direcao,
             boolean cambio) {
         this.inicioLocacao = inicioLocacao;
