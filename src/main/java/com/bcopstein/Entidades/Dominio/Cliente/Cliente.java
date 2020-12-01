@@ -19,19 +19,19 @@ public class Cliente {
     private String documento;
     private String nome;
     private String endereco;
-    private int locacoesFeitas;
-    private ESTADO_CIVIL estCivil;
-    private LocalDate dataNascimento;
+    private int locacoesfeitas;
+    private ESTADO_CIVIL estcivil;
+    private LocalDate datanascimento;
 
     public Cliente(){}
 
-    public Cliente(String nome, String documento, String endereco, int locacoesFeitas, ESTADO_CIVIL estCivil, LocalDate dataNascimento) {
+    public Cliente(String nome, String documento, String endereco, int locacoesfeitas, ESTADO_CIVIL estcivil, LocalDate datanascimento) {
         this.nome = nome;
         this.documento = documento;
         this.endereco = endereco;
-        this.locacoesFeitas = locacoesFeitas;
-        this.estCivil = estCivil;
-        this.dataNascimento = dataNascimento;
+        this.locacoesfeitas = locacoesfeitas;
+        this.estcivil = estcivil;
+        this.datanascimento = datanascimento;
     }
 
     @Override
@@ -71,26 +71,26 @@ public class Cliente {
     }
 
     public int getLocacoesFeitas() {
-        return locacoesFeitas;
+        return locacoesfeitas;
     }
 
     public void setLocacoesFeitas(int locacoesFeitas) {
-        this.locacoesFeitas = locacoesFeitas;
+        this.locacoesfeitas = locacoesFeitas;
     }
 
     public ESTADO_CIVIL getEstCivil() {
-        return estCivil;
+        return estcivil;
     }
 
     public void setEstCivil(ESTADO_CIVIL estCivil) {
-        this.estCivil = estCivil;
+        this.estcivil = estCivil;
     }
 
     public LocalDate getDataNascimento() {
-        return dataNascimento;
+        return datanascimento;
     }
 
-    public void setDataNascimento(LocalDate dataNascimento) {
-        this.dataNascimento = dataNascimento;
+    public void setDataNascimento(LocalDate datanascimento) {
+        this.datanascimento = datanascimento;
     }
 }

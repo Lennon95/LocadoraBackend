@@ -27,3 +27,9 @@ insert into carro (id, placa, idmarca,  idmodelo, direcao, arcondicionado, cambi
     (7, 'APX-2021',  2, 2,   1, 1, 1,  0, 'Branco'),
     (8, 'APX-2022',  2, 7,   1, 1, 1,  0, 'Prata'),
     (9, 'APX-2023',  2, 7,   1, 1, 1,  0, 'Prata');
+
+insert into cliente (id, documento, nome, endereco, locacoesfeitas, estcivil, datanascimento) 
+    values 
+        (1, '20202020', 'João Silva', 'Porto Alegre - RS', 4, 1, '1980-12-12'),
+        (2, '30303030', 'Maria Joana', 'Kingston - JM', 4, 1, '1968-10-08'),
+        (3, '40404040', 'Jack Nickolson', 'Los Angeles - CA', 4, 1, '1950-02-02');
