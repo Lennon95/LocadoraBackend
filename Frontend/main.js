@@ -13,11 +13,26 @@ function carregaModelos(modelos) {
   }).done(modelos);
 }
 
+function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
+
 function dt(d) {
-  if(d == null)
+  if(d == null || !isValidDate(d))
     return null;
-  else
-    return d.getDate()+"-"+(d.getMonth() + 1) + "-" + d.getFullYear();
+  else {
+    var dia = d.getDate();
+    if(dia < 10) {
+      dia = "0"+dia;
+    }
+    var mes = d.getMonth() + 1;
+    if(mes < 10) {
+      mes = "0"+mes;
+    }
+
+    return dia + "-" + mes + "-" + d.getFullYear();
+  }
+
 }
 
 function carregarCarros(cb) {
