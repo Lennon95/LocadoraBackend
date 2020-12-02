@@ -181,6 +181,11 @@ async function alugar(index) {
 
   }
 
+  if(inicio == null || fim == null) {
+    alert("Informe o período de locação!");
+    return;
+  }
+
   $.ajax({
     url: servidor + "/locacao/registrar",
     dataType: 'json',
