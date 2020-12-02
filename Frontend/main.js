@@ -181,6 +181,11 @@ async function alugar(index) {
 
   }
 
+  if(inicio == null || fim == null) {
+    alert("Informe o período de locação!");
+    return;
+  }
+
   $.ajax({
     url: servidor + "/locacao/registrar",
     dataType: 'json',
@@ -192,14 +197,15 @@ async function alugar(index) {
       fim: fim
     }
   }).done(function(resultado){
-
-      console.log(resultado);
-
-      carregarCarros((cr)=>{
-        carros = cr;
-        mostrarCarros();
-      });
-
+    if(resultado.confirmado == true) {
+      alert("Aluguel confirmado!");
+    } else {
+      alert("Não foi possível confirmar o aluguel!");
+    }
+    carregarCarros((cr)=>{
+      carros = cr;
+      mostrarCarros();
+    });
   });
 
 }
