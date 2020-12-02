@@ -31,24 +31,11 @@ h1 {
   display: block;
 }
 
-#form_filtros button:active {
-    background: #47a57f;
-}
-
-#form_filtros button:hover:not(:active) {
-    background: #67bc9a;
-}
-
 #form_filtros button {
     text-transform: uppercase;
-    background: #9ad3bc;
-    border-radius: 5px;
     margin-top: 32px;
     font-size: 14px;
     padding: 16px 0;
-    cursor: pointer;
-    color: white;
-    border: none;
 }
 
 #form_filtros input[type="text"],
@@ -97,6 +84,12 @@ h1 {
     margin: 4px 0;
 }
 
+
+.carro p.caract {
+  text-align: left;
+  color: #333333;
+}
+
 .carro h5 {
     color: #BCBCBC;
     margin: 0px;
@@ -115,30 +108,7 @@ h1 {
     text-align: right;
 }
 
-.carro a:active {
-    background: #47a57f;
-}
 
-.carro a:hover:not(:active) {
-    background: #67bc9a;
-}
-
-.carro a {
-    text-transform: uppercase;
-    box-sizing: border-box;
-    background: #9ad3bc;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: auto;
-    margin-top: 32px;
-    font-size: 14px;
-    cursor: pointer;
-    display: block;
-    color: white;
-    padding: 16px;
-    border: none;
-    width: 100px;
-}
 
 .carro {
     font-family: "Helvetica Neue", "Helvetica", sans-serif;
@@ -154,6 +124,10 @@ h1 {
     border: 1px solid gray;
     margin-bottom: 16px;
     padding: 32px;
+}
+
+.carro a {
+  float: right;
 }
 
 /* Rodapé */

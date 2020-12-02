@@ -13,6 +13,9 @@ function carregaModelos(modelos) {
   }).done(modelos);
 }
 
+function dt(d) {
+ return d.getDate()+"-"+(d.getMonth() + 1) + "-" + d.getFullYear();
+}
 
 function carregarCarros(cb) {
 
@@ -21,8 +24,8 @@ function carregarCarros(cb) {
   let fim = null;
 
   try {
-    inicio = datas[0].toISOString();
-    fim = datas[1].toISOString();
+    inicio = dt(datas[0]);
+    fim = dt(datas[1]);
   } catch(e) {
 
   }
@@ -89,20 +92,23 @@ async function mostrarCarros() {
 
 
   let template = `
-      <div class="carro">
+      <div class="carro card">
+        <div class="card-title">
+          <h4></h4>
+        </div>
+        <div class="card-body">
           <div>
-            <h5></h5>
-            <h4></h4>
+            <p class="caract"></p>
             <small></small>
           </div>
-
           <div>
             <p></p>
             <p></p>
             <p></p>
             <p></p>
-            <a onclick="alugar({0})">Alugar</a>
+            <a onclick="alugar({0})" class="btn btn-success">Alugar</a>
           </div>
+        </div>
       </div>
     `.trim();
 
@@ -130,9 +136,9 @@ async function mostrarCarros() {
     let caracteristicas = [];
     if (carro.arcondicionado) caracteristicas.push("Ar Condicionado");
     if (carro.direcao) caracteristicas.push("Dire&ccedil;&atilde;o Hidr&aacute;ulica");
-    if (carro.cambio) caracteristicas.push("C&acirc;mbio Autom&aacute;tico");
+    if (carro.cambioautomatico) caracteristicas.push("C&acirc;mbio Autom&aacute;tico");
 
-    const elemento_caracteristicas = elemento.querySelector("h5");
+    const elemento_caracteristicas = elemento.querySelector("p.caract");
     elemento_caracteristicas.innerHTML = caracteristicas.join("; ");
 
     $("#carros").append(elemento);
@@ -151,8 +157,8 @@ async function alugar(index) {
   let fim = null;
 
   try {
-    inicio = datas[0].toISOString();
-    fim = datas[1].toISOString();
+    inicio = dt(datas[0]);
+    fim = dt(datas[1]);
   } catch(e) {
 
   }
