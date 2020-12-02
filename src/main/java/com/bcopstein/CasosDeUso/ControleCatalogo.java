@@ -13,6 +13,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -32,9 +33,10 @@ public class ControleCatalogo {
         List<Carro> carros = this.getListaCarros(filtro);
         ArrayList<CarrosDTO> result = new ArrayList<CarrosDTO>();
 
-        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao()) : null;
-        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao()) : null;
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
+        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
+        
         for (Carro carro : carros) {
             float[] custos = this.servicoLoc.calculaCustos(carro, null, inicio, fim);
             CarrosDTO carrosDTO = new CarrosDTO(carro, custos[0], custos[1], custos[2], custos[3]);
@@ -44,28 +46,18 @@ public class ControleCatalogo {
     }
 
     private List<Carro> getListaCarros(FiltroDTO filtro) {
-        if(filtro == null) {
-            return this.servicoCat.listaCarrosDisponiveis(
-                null,
-                null,
-                false,
-                false,
-                false,
-                0,
-                0
-            );
-
-        } else {
-            return this.servicoCat.listaCarrosDisponiveis(
-                LocalDate.parse(filtro.getInicioLocacao()),
-                LocalDate.parse(filtro.getFimLocacao()),
-                filtro.isArcondicionado(),
-                filtro.isDirecao(),
-                filtro.isCambio(),
-                filtro.getIdmarca(),
-                filtro.getIdmodelo()
-            );
-        }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
+        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
+        return this.servicoCat.listaCarrosDisponiveis(
+            inicio,
+            fim,
+            filtro.isArcondicionado(),
+            filtro.isDirecao(),
+            filtro.isCambio(),
+            filtro.getIdmarca(),
+            filtro.getIdmodelo()
+        );
     }
 
     public Collection<Marca> listaMarcas() {

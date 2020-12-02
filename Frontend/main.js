@@ -57,8 +57,8 @@ function carregarCarros(cb) {
       arcondicionado: $("#arcondicionado").is(":checked") ? 1 : 0,
       cambio: $("#cambio").is(":checked") ? 1 : 0,
       direcao: $("#direcao").is(":checked") ? 1 : 0,
-      inicio: inicio,
-      fim:fim
+      inicioLocacao: inicio,
+      fimLocacao:fim
     }
   }).done(cb);
 }

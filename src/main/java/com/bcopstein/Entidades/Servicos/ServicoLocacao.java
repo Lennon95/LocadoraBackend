@@ -65,7 +65,7 @@ public class ServicoLocacao {
     }
 
     public float[] calculaCustos(Carro carro, Cliente cliente, LocalDate inicio, LocalDate fim) {
-        int dias = fim != null ? fim.compareTo(inicio) : 2;
+        int dias = (fim != null ? fim.compareTo(inicio) : 1);
         float[] dados = new float[4];
         dados[0] = this.custoCalc.calcula(cliente, carro, inicio, fim) * dias;
         dados[1] = this.segCalc.calcula(cliente, carro, inicio, fim);
