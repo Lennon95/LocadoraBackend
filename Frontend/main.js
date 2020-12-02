@@ -14,7 +14,10 @@ function carregaModelos(modelos) {
 }
 
 function dt(d) {
- return d.getDate()+"-"+(d.getMonth() + 1) + "-" + d.getFullYear();
+  if(d == null)
+    return null;
+  else
+    return d.getDate()+"-"+(d.getMonth() + 1) + "-" + d.getFullYear();
 }
 
 function carregarCarros(cb) {
