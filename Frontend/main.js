@@ -15,6 +15,18 @@ function carregaModelos(modelos) {
 
 
 function carregarCarros(cb) {
+
+  let datas = lerDatas();
+  let inicio = null;
+  let fim = null;
+
+  try {
+    inicio = datas[0].toISOString();
+    fim = datas[0].toISOString();
+  } catch(e) {
+
+  }
+
   $.ajax({
     url: servidor + "/catalogo/carrosDisponiveis",
     dataType: 'json',
@@ -23,7 +35,9 @@ function carregarCarros(cb) {
       idmodelo: $("#modelos").val(),
       arcondicionado: $("#arcondicionado").is(":checked") ? 1 : 0,
       cambio: $("#cambio").is(":checked") ? 1 : 0,
-      direcao: $("#direcao").is(":checked") ? 1 : 0
+      direcao: $("#direcao").is(":checked") ? 1 : 0,
+      inicio: inicio,
+      fim:fim
     }
   }).done(cb);
 }
@@ -126,38 +140,44 @@ async function mostrarCarros() {
 }
 
 async function alugar(index) {
-  let url = new URL(servidor + "/locadora/confirmaLocacao");
-  const carro = carros[index];
+
+  let carro = carros[index].carro;
+
+  var documento = prompt("Por favor, informe o número do seu documento:", "20202020");
+
+
+  let datas = lerDatas();
+  let inicio = null;
+  let fim = null;
 
   try {
-    let resposta = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(carro),
-      headers: { "Content-type": "application/json;charset=UTF8" }
-    });
+    inicio = datas[0].toISOString();
+    fim = datas[0].toISOString();
+  } catch(e) {
 
-    if (resposta.ok) {
-        let conteudo = await resposta.json();
-
-        if (!conteudo) {
-          alert(
-            "Requisi\u00E7\u00E3o bem-sucedida, mas corpo da resposta " +
-            "n\u00E3o p\u00F4de ser interpretado"
-          );
-        } else {
-          alert("Loca\u00e7\u00e3o conclu\u00edda com sucesso");
-          carros = await carregarCarros(filtros);
-          mostrarCarros(carros);
-        }
-    } else {
-        alert(
-          "Falha ao confirmar a loca&ccedil;&atilde;o!\n",
-          `Status da resposta: ${resposta.status}`,
-          `Mensagem de status da resposta: ${resposta.statusText}`);
-    }
-  } catch (erro) {
-    alert(erro);
   }
+
+  $.ajax({
+    url: servidor + "/locacao/registrar",
+    dataType: 'json',
+    method: "POST",
+    data: {
+      placaCarro: carro.placa,
+      docCliente: documento,
+      inicio: inicio,
+      fim: fim
+    }
+  }).done(function(resultado){
+
+      console.log(resultado);
+
+      carregarCarros((cr)=>{
+        carros = cr;
+        mostrarCarros();
+      });
+
+  });
+
 }
 
 function lerDatas() {
