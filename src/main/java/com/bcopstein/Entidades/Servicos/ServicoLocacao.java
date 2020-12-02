@@ -44,12 +44,15 @@ public class ServicoLocacao {
     }
 
     public float[] locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
-        Collection<Carro> cars = this.carros.pesquisa((Carro c) -> c.getPlaca() == placaCarro);
+        if (inicio == null || fim == null)
+            throw new SistLocacaoException(SistLocacaoException.Causa.DATA_INVALIDA);
+
+        Collection<Carro> cars = this.carros.pesquisa((Carro c) -> c.getPlaca().equals(placaCarro));
         if (cars.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CARRO_NAO_ENCONTRADO);
         Carro carro = cars.toArray(new Carro[0])[0];
 
-        Collection<Cliente> clts = this.clientes.pesquisa((Cliente c) -> c.getDocumento() == docCliente);
+        Collection<Cliente> clts = this.clientes.pesquisa((Cliente c) -> c.getDocumento().equals(docCliente));
         if (clts.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CLIENTE_NAO_ENCONTRADO);
         Cliente cliente = clts.toArray(new Cliente[0])[0];

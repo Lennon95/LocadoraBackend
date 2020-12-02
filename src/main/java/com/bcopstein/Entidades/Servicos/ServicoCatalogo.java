@@ -47,7 +47,11 @@ public class ServicoCatalogo {
                                                   
         final Collection<Locacao> locs;
         if (inicioLocacao != null && fimLocacao != null) {
-            locs = this.locacoes.pesquisa((Locacao l) -> l.getInicio().compareTo(inicioLocacao) > 0 && l.getFim().compareTo(fimLocacao) < 0);
+            locs = this.locacoes.pesquisa((Locacao l) ->
+                l.getInicio().compareTo(inicioLocacao) > 0 &&
+                l.getFim().compareTo(fimLocacao) < 0 &&
+                !l.isDevolvido()
+            );
         } else {
             locs = new ArrayList<Locacao>();
         }
