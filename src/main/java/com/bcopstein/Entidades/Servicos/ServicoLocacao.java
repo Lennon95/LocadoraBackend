@@ -72,5 +72,4 @@ public class ServicoLocacao {
         dados[3] = ((dados[0] + dados[1]) - dados[2]);
         return dados;
     }
-
 }

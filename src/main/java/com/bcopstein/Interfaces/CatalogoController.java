@@ -30,7 +30,7 @@ public class CatalogoController {
     @GetMapping("/carrosDisponiveis")
     @CrossOrigin(origins = "*")
     public Collection<CarrosDTO> carrosDisponiveis(FiltroDTO filtro) {
-        return this.catalogo.carrosDisponiveis(filtro);                
+        return this.catalogo.carrosDisponiveis(filtro);             
     }
     
     @GetMapping("/marcas")
