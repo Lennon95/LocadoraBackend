@@ -39,3 +39,7 @@ insert into cliente (id, documento, nome, endereco, locacoesfeitas, estcivil, da
         (1, '20202020', 'João Silva', 'Porto Alegre - RS', 4, 1, '1980-12-12'),
         (2, '30303030', 'Maria Joana', 'Kingston - JM', 4, 1, '1968-10-08'),
         (3, '40404040', 'Jack Nickolson', 'Los Angeles - CA', 4, 1, '1950-02-02');
+
+insert into locacao (id, idcarro, inicio, fim, devolvido, devolvidoem, valorcobrado, idcliente)
+    values 
+        (1, 1, '2020-01-01','2020-12-01', 1, '2020-12-01',1000.0, 1);
