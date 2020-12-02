@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.naming.OperationNotSupportedException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,12 +35,15 @@ public class ControleLocacao {
 
     public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
         try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+            LocalDate inicio = (locacao.getInicio() != null) ? LocalDate.parse(locacao.getInicio(), formatter) : null;
+            LocalDate fim = (locacao.getFim() != null) ? LocalDate.parse(locacao.getFim(), formatter) : null;
             float[] custos = this.servicoLoc.locarCarro(
                                         locacao.getPlacaCarro(),
                                         locacao.getDocCliente(),
-                                        locacao.getInicio(),
-                                        locacao.getFim());
-            return new LocacaoConfirmacaoDTO(true, custos[1], custos[2], custos[0], custos[3], locacao.getFim());
+                                        inicio,
+                                        fim);
+            return new LocacaoConfirmacaoDTO(true, custos[1], custos[2], custos[0], custos[3], fim);
 
         } catch (SistLocacaoException exception) {
             return new LocacaoConfirmacaoDTO(false, 0.0f, 0.0f, 0.0f, 0.0f, null);

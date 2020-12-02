@@ -1,14 +1,12 @@
 package com.bcopstein.Interfaces.DTO;
 
-import java.time.LocalDate;
-
 public class LocacaoDTO {
     private String placaCarro;
     private String docCliente;
-    private LocalDate inicio;
-    private LocalDate fim;
+    private String inicio;
+    private String fim;
 
-    public LocacaoDTO(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
+    public LocacaoDTO(String placaCarro, String docCliente, String inicio, String fim) {
         this.placaCarro = placaCarro;
         this.docCliente = docCliente;
         this.inicio = inicio;
@@ -31,19 +29,19 @@ public class LocacaoDTO {
         this.docCliente = docCliente;
     }
 
-    public LocalDate getInicio() {
+    public String getInicio() {
         return inicio;
     }
 
-    public void setInicio(LocalDate inicio) {
+    public void setInicio(String inicio) {
         this.inicio = inicio;
     }
 
-    public LocalDate getFim() {
+    public String getFim() {
         return fim;
     }
 
-    public void setFim(LocalDate fim) {
+    public void setFim(String fim) {
         this.fim = fim;
     }    
 }

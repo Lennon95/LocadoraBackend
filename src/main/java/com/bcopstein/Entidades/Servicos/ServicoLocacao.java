@@ -68,8 +68,8 @@ public class ServicoLocacao {
         int dias = (fim != null ? fim.compareTo(inicio) : 1);
         float[] dados = new float[4];
         dados[0] = this.custoCalc.calcula(cliente, carro, inicio, fim) * dias;
-        dados[1] = this.segCalc.calcula(cliente, carro, inicio, fim);
-        dados[2] = this.descCalc.calcula(cliente, carro, inicio, fim);
+        dados[1] = this.segCalc.calcula(cliente, carro, inicio, fim) * dias;
+        dados[2] = this.descCalc.calcula(cliente, carro, inicio, fim) * dias;
         dados[3] = ((dados[0] + dados[1]) - dados[2]);
         return dados;
     }
