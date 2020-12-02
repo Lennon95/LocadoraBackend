@@ -119,7 +119,7 @@ async function mostrarCarros() {
             <p class="caract"></p>
             <small></small>
           </div>
-          <div>
+          <div class="valores">
             <p></p>
             <p></p>
             <p></p>
@@ -145,7 +145,7 @@ async function mostrarCarros() {
     const elemento_placa = elemento.querySelector("div small");
     elemento_placa.innerHTML = carro.placa;
 
-    const elementos_preco = elemento.querySelectorAll("div p");
+    const elementos_preco = elemento.querySelectorAll("div.valores p");
     elementos_preco[0].innerHTML = "Custo: R$ " + item.custo;
     elementos_preco[1].innerHTML = "Seguro: R$ " + item.seguro;
     elementos_preco[2].innerHTML = "Desconto: R$ " + item.descontos;
