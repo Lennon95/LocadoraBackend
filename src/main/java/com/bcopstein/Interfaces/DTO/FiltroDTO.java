@@ -1,10 +1,8 @@
 package com.bcopstein.Interfaces.DTO;
 
-import java.time.LocalDate;
-
 public class FiltroDTO {
-    private LocalDate inicioLocacao;
-    private LocalDate fimLocacao;
+    private String inicio;
+    private String fim;
     private boolean arcondicionado = false;
     private boolean direcao = false;
     private boolean cambio = false;
@@ -14,10 +12,10 @@ public class FiltroDTO {
     public FiltroDTO() {
     }
     
-    public FiltroDTO(LocalDate inicioLocacao, LocalDate fimLocacao, boolean arcondicionado, boolean direcao,
+    public FiltroDTO(String inicioLocacao, String fimLocacao, boolean arcondicionado, boolean direcao,
             boolean cambio, long idmarca, long idmodelo) {
-        this.inicioLocacao = inicioLocacao;
-        this.fimLocacao = fimLocacao;
+        this.inicio = inicioLocacao;
+        this.fim = fimLocacao;
         this.arcondicionado = arcondicionado;
         this.direcao = direcao;
         this.cambio = cambio;
@@ -25,20 +23,20 @@ public class FiltroDTO {
         this.idmodelo = idmodelo;
     }
 
-    public LocalDate getInicioLocacao() {
-        return inicioLocacao;
+    public String getInicioLocacao() {
+        return inicio;
     }
 
-    public void setInicioLocacao(LocalDate inicioLocacao) {
-        this.inicioLocacao = inicioLocacao;
+    public void setInicioLocacao(String inicioLocacao) {
+        this.inicio = inicioLocacao;
     }
 
-    public LocalDate getFimLocacao() {
-        return fimLocacao;
+    public String getFimLocacao() {
+        return fim;
     }
 
-    public void setFimLocacao(LocalDate fimLocacao) {
-        this.fimLocacao = fimLocacao;
+    public void setFimLocacao(String fimLocacao) {
+        this.fim = fimLocacao;
     }
 
     public boolean isArcondicionado() {

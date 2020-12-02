@@ -32,8 +32,8 @@ public class ControleCatalogo {
         List<Carro> carros = this.getListaCarros(filtro);
         ArrayList<CarrosDTO> result = new ArrayList<CarrosDTO>();
 
-        LocalDate inicio = (filtro != null) ? filtro.getInicioLocacao() : null;
-        LocalDate fim = (filtro != null) ? filtro.getFimLocacao() : null;
+        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao()) : null;
+        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao()) : null;
 
         for (Carro carro : carros) {
             float[] custos = this.servicoLoc.calculaCustos(carro, null, inicio, fim);
@@ -57,8 +57,8 @@ public class ControleCatalogo {
 
         } else {
             return this.servicoCat.listaCarrosDisponiveis(
-                filtro.getInicioLocacao(),
-                filtro.getFimLocacao(),
+                LocalDate.parse(filtro.getInicioLocacao()),
+                LocalDate.parse(filtro.getFimLocacao()),
                 filtro.isArcondicionado(),
                 filtro.isDirecao(),
                 filtro.isCambio(),
