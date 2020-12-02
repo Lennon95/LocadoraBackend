@@ -22,7 +22,7 @@ function carregarCarros(cb) {
 
   try {
     inicio = datas[0].toISOString();
-    fim = datas[0].toISOString();
+    fim = datas[1].toISOString();
   } catch(e) {
 
   }
@@ -152,7 +152,7 @@ async function alugar(index) {
 
   try {
     inicio = datas[0].toISOString();
-    fim = datas[0].toISOString();
+    fim = datas[1].toISOString();
   } catch(e) {
 
   }
