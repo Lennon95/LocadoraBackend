@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.naming.OperationNotSupportedException;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,13 +27,13 @@ public class LocacaoController {
         this.controle = controle;
     }
 
-    @GetMapping("/registrar")
+    @PostMapping("/registrar")
     @CrossOrigin(origins = "*")
     public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
         return this.controle.registrarLocacao(locacao);
     }
 
-    @GetMapping("/devolucao")
+    @PostMapping("/devolucao")
     @CrossOrigin(origins = "*")
     public DevolucaoConfirmacaoDTO registrarDevolucao(DevolucaoDTO locacao) throws OperationNotSupportedException {
         return this.controle.registrarDevolucao(locacao);

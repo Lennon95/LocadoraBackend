@@ -10,6 +10,7 @@ import com.bcopstein.Interfaces.DTO.LocacaoConfirmacaoDTO;
 import com.bcopstein.Interfaces.DTO.LocacaoDTO;
 import com.bcopstein.Interfaces.DTO.DevolucaoConfirmacaoDTO;
 import com.bcopstein.Interfaces.DTO.DevolucaoDTO;
+import com.bcopstein.Entidades.SistLocacaoException;
 
 import java.util.Collection;
 import java.util.List;
@@ -32,13 +33,17 @@ public class ControleLocacao {
     }
 
     public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
-        float[] custos = this.servicoLoc.locarCarro(
+        try {
+            float[] custos = this.servicoLoc.locarCarro(
                                         locacao.getPlacaCarro(),
                                         locacao.getDocCliente(),
                                         locacao.getInicio(),
                                         locacao.getFim());
-        
-        return new LocacaoConfirmacaoDTO(true, custos[1], custos[2], custos[0], custos[3], locacao.getFim());
+            return new LocacaoConfirmacaoDTO(true, custos[1], custos[2], custos[0], custos[3], locacao.getFim());
+
+        } catch (SistLocacaoException exception) {
+            return new LocacaoConfirmacaoDTO(false, 0.0f, 0.0f, 0.0f, 0.0f, null);
+        }
     }
 
     public DevolucaoConfirmacaoDTO registrarDevolucao(DevolucaoDTO locacao) throws OperationNotSupportedException {
