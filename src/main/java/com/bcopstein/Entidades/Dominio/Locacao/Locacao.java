@@ -17,7 +17,7 @@ import javax.persistence.ManyToOne;
 public class Locacao {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long nroLocacao;
+    private Long id;
     
     @ManyToOne
     @JoinColumn(name="idcarro", nullable=false)
@@ -26,8 +26,8 @@ public class Locacao {
     private LocalDate inicio;
     private LocalDate fim;
     private boolean devolvido;
-    private LocalDate devolvidoEm;
-    private float valorCobrado;
+    private LocalDate devolvidoem;
+    private float valorcobrado;
     
     @ManyToOne
     @JoinColumn(name="idcliente", nullable=false)
@@ -41,8 +41,8 @@ public class Locacao {
         this.inicio = inicio;
         this.fim = fim;
         this.devolvido = devolvido;
-        this.devolvidoEm = devolvidoEm;
-        this.valorCobrado = valorCobrado;
+        this.devolvidoem = devolvidoEm;
+        this.valorcobrado = valorCobrado;
         this.cliente = cliente;
     }
 
@@ -60,12 +60,12 @@ public class Locacao {
         }
     }
 
-    public Long getNroLocacao() {
-        return nroLocacao;
+    public Long getId() {
+        return id;
     }
 
-    public void setNroLocacao(Long nroLocacao) {
-        this.nroLocacao = nroLocacao;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Carro getCarro() {
@@ -101,19 +101,19 @@ public class Locacao {
     }
 
     public LocalDate getDevolvidoEm() {
-        return devolvidoEm;
+        return devolvidoem;
     }
 
-    public void setDevolvidoEm(LocalDate devolvidoEm) {
-        this.devolvidoEm = devolvidoEm;
+    public void setDevolvidoEm(LocalDate devolvidoem) {
+        this.devolvidoem = devolvidoem;
     }
 
-    public float getValorCobrado() {
-        return valorCobrado;
+    public float getValorcobrado() {
+        return valorcobrado;
     }
 
-    public void setValorCobrado(float valorCobrado) {
-        this.valorCobrado = valorCobrado;
+    public void setValorcobrado(float valorcobrado) {
+        this.valorcobrado = valorcobrado;
     }
 
     public Cliente getCliente() {
