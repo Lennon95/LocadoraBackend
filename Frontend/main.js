@@ -226,6 +226,10 @@ $(document).ready(function() {
   carregaMarcas((ms)=>{
     marcas = ms;
     mostrarMarcas();
+    carregarCarros((cr)=>{
+      carros = cr;
+      mostrarCarros();
+    });
   });
 
 
