@@ -36,8 +36,8 @@ public class ControleLocacao {
     public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
         try {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate inicio = (locacao.getInicio() != null) ? LocalDate.parse(locacao.getInicio(), formatter) : null;
-            LocalDate fim = (locacao.getFim() != null) ? LocalDate.parse(locacao.getFim(), formatter) : null;
+            LocalDate inicio = (locacao.getInicio() != "") ? LocalDate.parse(locacao.getInicio(), formatter) : null;
+            LocalDate fim = (locacao.getFim() != "") ? LocalDate.parse(locacao.getFim(), formatter) : null;
             float[] custos = this.servicoLoc.locarCarro(
                                         locacao.getPlacaCarro(),
                                         locacao.getDocCliente(),

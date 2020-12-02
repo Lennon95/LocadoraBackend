@@ -34,8 +34,8 @@ public class ControleCatalogo {
         ArrayList<CarrosDTO> result = new ArrayList<CarrosDTO>();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
-        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
+        LocalDate inicio = (filtro.getInicioLocacao() != "") ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
+        LocalDate fim = (filtro.getFimLocacao() != "") ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
         
         for (Carro carro : carros) {
             float[] custos = this.servicoLoc.calculaCustos(carro, null, inicio, fim);
@@ -47,8 +47,8 @@ public class ControleCatalogo {
 
     private List<Carro> getListaCarros(FiltroDTO filtro) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate inicio = (filtro.getInicioLocacao() != null) ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
-        LocalDate fim = (filtro.getFimLocacao() != null) ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
+        LocalDate inicio = (filtro.getInicioLocacao() != "") ? LocalDate.parse(filtro.getInicioLocacao(), formatter) : null;
+        LocalDate fim = (filtro.getFimLocacao() != "") ? LocalDate.parse(filtro.getFimLocacao(), formatter) : null;
         return this.servicoCat.listaCarrosDisponiveis(
             inicio,
             fim,
