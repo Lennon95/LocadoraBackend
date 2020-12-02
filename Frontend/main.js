@@ -192,14 +192,15 @@ async function alugar(index) {
       fim: fim
     }
   }).done(function(resultado){
-
-      console.log(resultado);
-
-      carregarCarros((cr)=>{
-        carros = cr;
-        mostrarCarros();
-      });
-
+    if(resultado.confirmado == true) {
+      alert("Aluguel confirmado!");
+    } else {
+      alert("Não foi possível confirmar o aluguel!");
+    }
+    carregarCarros((cr)=>{
+      carros = cr;
+      mostrarCarros();
+    });
   });
 
 }
