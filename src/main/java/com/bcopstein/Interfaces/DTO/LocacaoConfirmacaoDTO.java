@@ -3,7 +3,6 @@ package com.bcopstein.Interfaces.DTO;
 import java.time.LocalDate;
 
 public class LocacaoConfirmacaoDTO {
-    private int codigo;
     private boolean confirmado;
     private float valorSeguro;
     private float valorDesconto;
@@ -11,31 +10,16 @@ public class LocacaoConfirmacaoDTO {
     private float totalPagar;
     private LocalDate dataDevolucao;  
 
-    public LocacaoConfirmacaoDTO() {
-    }
+    public LocacaoConfirmacaoDTO() {}
 
-    public LocacaoConfirmacaoDTO(int codigo, boolean confirmado, float valorSeguro, float valorDesconto, float subtotal, float totalPagar, LocalDate dataDevolucao) {
-        this.codigo = codigo;
+    public LocacaoConfirmacaoDTO(boolean confirmado, float valorSeguro, float valorDesconto,
+                                 float subtotal, float totalPagar, LocalDate dataDevolucao) {
         this.confirmado = confirmado;
         this.valorSeguro = valorSeguro;
         this.valorDesconto = valorDesconto;
         this.subtotal = subtotal;
         this.totalPagar = totalPagar;
         this.dataDevolucao = dataDevolucao;
-    }
-
-    /**
-     * @return the codigo
-     */
-    public int getCodigo() {
-        return codigo;
-    }
-
-    /**
-     * @param codigo the codigo to set
-     */
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
     }
 
     /**

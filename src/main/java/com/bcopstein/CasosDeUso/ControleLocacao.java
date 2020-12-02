@@ -31,8 +31,14 @@ public class ControleLocacao {
         this.servicoCat = servicoCat;
     }
 
-    public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) throws OperationNotSupportedException {
-        throw new OperationNotSupportedException("Operação não implementada.");
+    public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
+        float[] custos = this.servicoLoc.locarCarro(
+                                        locacao.getPlacaCarro(),
+                                        locacao.getDocCliente(),
+                                        locacao.getInicio(),
+                                        locacao.getFim());
+        
+        return new LocacaoConfirmacaoDTO(true, custos[1], custos[2], custos[0], custos[3], locacao.getFim());
     }
 
     public DevolucaoConfirmacaoDTO registrarDevolucao(DevolucaoDTO locacao) throws OperationNotSupportedException {

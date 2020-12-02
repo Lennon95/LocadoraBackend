@@ -82,4 +82,16 @@ public class ServicoCatalogo {
                            .filter((Modelo m) -> m.getMarca().getId() == nroMarca)
                            .collect(Collectors.toList());
     }
+
+    public boolean isCarroDisponivelData(Carro carro, LocalDate inicioLocacao,
+                                         LocalDate fimLocacao) {
+
+        Collection<Locacao> locs = this.locacoes.pesquisa((Locacao l) -> l.getInicio().compareTo(inicioLocacao) > 0 && l.getFim().compareTo(fimLocacao) < 0);
+        for (Locacao loc: locs) {
+            if (loc.getCarro().equals(carro))
+                return false;
+        }
+
+        return true;
+    }
 }

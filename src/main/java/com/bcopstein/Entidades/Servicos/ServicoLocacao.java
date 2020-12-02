@@ -43,7 +43,7 @@ public class ServicoLocacao {
         this.custoCalc = custoCalc;
     }
 
-    public Locacao locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
+    public float[] locarCarro(String placaCarro, String docCliente, LocalDate inicio, LocalDate fim) {
         Collection<Carro> cars = this.carros.pesquisa((Carro c) -> c.getPlaca() == placaCarro);
         if (cars.size() == 0)
             throw new SistLocacaoException(SistLocacaoException.Causa.CARRO_NAO_ENCONTRADO);
@@ -61,12 +61,12 @@ public class ServicoLocacao {
 
         this.locacoes.cadastra(locacao);
         this.clientes.atualiza(cliente);
-        return locacao;
+        return custos;
     }
 
     public float[] calculaCustos(Carro carro, Cliente cliente, LocalDate inicio, LocalDate fim) {
         float[] dados = new float[4];
-        dados[0] = this.custoCalc.calcula(cliente, carro, inicio, fim);
+        dados[0] = this.custoCalc.calcula(cliente, carro, inicio, fim) * fim.compareTo(inicio);
         dados[1] = this.segCalc.calcula(cliente, carro, inicio, fim);
         dados[2] = this.descCalc.calcula(cliente, carro, inicio, fim);
         dados[3] = ((dados[0] + dados[1]) - dados[2]);

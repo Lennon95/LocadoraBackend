@@ -29,7 +29,7 @@ public class LocacaoController {
 
     @GetMapping("/registrar")
     @CrossOrigin(origins = "*")
-    public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) throws OperationNotSupportedException {
+    public LocacaoConfirmacaoDTO registrarLocacao(LocacaoDTO locacao) {
         return this.controle.registrarLocacao(locacao);
     }
 
