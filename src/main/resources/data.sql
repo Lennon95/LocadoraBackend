@@ -5,7 +5,9 @@ insert into marca (id, nome) values
     (3, 'Ford'),
     (4, 'Nissan'),
     (5, 'Fiat'),
-    (6, 'Jeep');
+    (6, 'Jeep'),
+    (7,'Tiago Marca');
+    
 
 insert into modelo (id, nome, idmarca, valor) values 
     (1, 'Cruze',1, 100.0),
@@ -15,7 +17,8 @@ insert into modelo (id, nome, idmarca, valor) values
     (3, 'F-1000',3, 70.0),
     (4, 'Sientra',4, 80.0),
     (5, 'Palio',5 , 40.0),
-    (6, 'Compass',6, 200.0);
+    (6, 'Compass',6, 200.0),
+    (10,'Modelo Tiago',7,100.0);
 
 insert into carro (id, placa, idmarca,  idmodelo, direcao, arcondicionado, cambioautomatico, km, cor) values 
     (1, 'APX-1232',  1, 1,   1, 1, 1,  0, 'Preto'),
@@ -39,3 +42,4 @@ insert into cliente (id, documento, nome, endereco, locacoesfeitas, estcivil, da
         (1, '20202020', 'João Silva', 'Porto Alegre - RS', 4, 1, '1980-12-12'),
         (2, '30303030', 'Maria Joana', 'Kingston - JM', 4, 1, '1968-10-08'),
         (3, '40404040', 'Jack Nickolson', 'Los Angeles - CA', 4, 1, '1950-02-02');
+

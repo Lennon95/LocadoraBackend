@@ -17,9 +17,9 @@ public class SeguroPortoSeguro implements SeguroCalculator {
             int anoNasc = cliente.getDataNascimento().getYear();
             int anoAtual = Calendar.getInstance().get(Calendar.YEAR);
             if(anoAtual - anoNasc > 30)  {
-                return carro.getModelo().getValor() * (float)0.02;        
-            } else {
                 return carro.getModelo().getValor() * (float)0.12;        
+            } else {
+                return carro.getModelo().getValor() * (float)0.02;        
             }
         }
     }
